@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growbeaux</title>
+<meta name="description" content="A new system for men.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b14;
+    --bg-1: #17131f;
+    --bg-2: #1f1a2b;
+    --ink: #f5f0f5;
+    --ink-soft: #b8adc4;
+    --ink-faded: #6a5f7a;
+    --mint: #a8e6cf;
+    --peach: #ffb7a0;
+    --lavender: #c8b6ff;
+    --butter: #fff3a8;
+    --sky: #a0d8ff;
+    --rose: #ffb3d1;
+    --mint-soft: rgba(168,230,207,0.12);
+    --peach-soft: rgba(255,183,160,0.12);
+    --lavender-soft: rgba(200,182,255,0.15);
+    --rule: rgba(245,240,245,0.08);
+    --rule-strong: rgba(245,240,245,0.18);
+    --sans: 'Geist', -apple-system, sans-serif;
+    --mono: 'Geist Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -30vh; left: 0;
+    width: 100vw; height: 120vh;
+    background:
+      radial-gradient(ellipse 40% 40% at 20% 20%, var(--mint-soft), transparent 70%),
+      radial-gradient(ellipse 35% 35% at 80% 30%, var(--peach-soft), transparent 70%),
+      radial-gradient(ellipse 45% 45% at 50% 80%, var(--lavender-soft), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    animation: drift 20s ease-in-out infinite;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(2%, -1%); }
+    66% { transform: translate(-1%, 2%); }
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    background: rgba(14,11,20,0.6);
+    border-bottom: 1px solid var(--rule);
+  }
+  .logo {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+  }
+  .nav-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faded);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-meta-dot {
+    width: 6px; height: 6px;
+    background: var(--mint);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--mint);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 32px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 48px;
+    padding: 8px 18px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--mint-soft), var(--lavender-soft));
+    animation: fadeIn 1s ease-out;
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(64px, 11vw, 180px);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    margin-bottom: 32px;
+    max-width: 1100px;
+    animation: fadeUp 1.2s cubic-bezier(0.2, 0.9, 0.3, 1) 0.1s backwards;
+  }
+  h1 .gradient {
+    background: linear-gradient(135deg, var(--mint) 0%, var(--sky) 40%, var(--lavender) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-bottom: 56px;
+    line-height: 1.55;
+    font-weight: 400;
+    animation: fadeUp 1.2s cubic-bezier(0.2, 0.9, 0.3, 1) 0.3s backwards;
+  }
+
+  .hero-cta {
+    animation: fadeUp 1.2s cubic-bezier(0.2, 0.9, 0.3, 1) 0.5s backwards;
+  }
+
+  /* WAITLIST INPUT */
+  .waitlist {
+    display: flex;
+    gap: 8px;
+    background: var(--bg-1);
+    padding: 8px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    width: 100%;
+    max-width: 440px;
+    transition: all 0.3s;
+  }
+  .waitlist:focus-within {
+    border-color: var(--mint);
+    box-shadow: 0 0 0 6px var(--mint-soft);
+  }
+  .waitlist input {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+  }
+  .waitlist input::placeholder { color: var(--ink-faded); }
+  .waitlist button {
+    padding: 14px 28px;
+    border: none;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .waitlist button:hover {
+    background: linear-gradient(135deg, var(--peach), var(--rose));
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(255,183,160,0.25);
+  }
+  .waitlist button:active { transform: translateY(0); }
+  .hero-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faded);
+    margin-top: 20px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  /* TICKER */
+  .ticker {
+    overflow: hidden;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 0;
+    background: var(--bg-1);
+    position: relative;
+    z-index: 2;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 64px;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+  .ticker-item:nth-child(3n)::after { content: '✦'; color: var(--mint); }
+  .ticker-item:nth-child(3n+1)::after { content: '✦'; color: var(--peach); }
+  .ticker-item:nth-child(3n+2)::after { content: '✦'; color: var(--lavender); }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 140px 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faded);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--mint), var(--lavender));
+  }
+
+  h2 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(44px, 6.5vw, 88px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 80px;
+    max-width: 900px;
+  }
+  h2 .mint {
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2 .peach {
+    background: linear-gradient(135deg, var(--peach), var(--rose));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2 .lavender {
+    background: linear-gradient(135deg, var(--lavender), var(--sky));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* THE STACK — bento grid */
+  .stack {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+  }
+  .tier {
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .tier:hover {
+    border-color: var(--rule-strong);
+    transform: translateY(-2px);
+    background: var(--bg-2);
+  }
+  .tier-1 { grid-column: 1; grid-row: 1 / span 2; min-height: 480px; }
+  .tier-2 { grid-column: 2 / span 2; grid-row: 1; }
+  .tier-3 { grid-column: 2; grid-row: 2; }
+  .tier-4 { grid-column: 3; grid-row: 2; }
+
+  .tier-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faded);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .tier-name {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 36px;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .tier-1 .tier-name { font-size: 52px; }
+  .tier-price {
+    font-family: var(--mono);
+    font-size: 13px;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .tier-1 .tier-price { color: var(--mint); }
+  .tier-2 .tier-price { color: var(--peach); }
+  .tier-3 .tier-price { color: var(--lavender); }
+  .tier-4 .tier-price { color: var(--butter); }
+  .tier-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 32px;
+    max-width: 380px;
+  }
+  .tier-features {
+    list-style: none;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+  .tier-features li {
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    font-family: var(--mono);
+    font-weight: 500;
+  }
+  .tier-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--mint);
+  }
+
+  .tier-1::after {
+    content: '';
+    position: absolute;
+    top: -40%; right: -40%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--mint-soft) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .tier-2::after {
+    content: '';
+    position: absolute;
+    bottom: -50%; right: -30%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, var(--peach-soft) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .tier-3::after {
+    content: '';
+    position: absolute;
+    top: -30%; left: -30%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, var(--lavender-soft) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .timeline-left {
+    position: sticky;
+    top: 120px;
+  }
+  .timeline-left p {
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 400px;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .step {
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    transition: padding 0.3s;
+    cursor: default;
+  }
+  .step:hover { padding-left: 12px; }
+  .step:last-child { border-bottom: 1px solid var(--rule); }
+  .step-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .step:nth-child(1) .step-num { color: var(--mint); }
+  .step:nth-child(2) .step-num { color: var(--peach); }
+  .step:nth-child(3) .step-num { color: var(--lavender); }
+  .step:nth-child(4) .step-num { color: var(--butter); }
+  .step-content h3 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 28px;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .step-content p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* MANIFESTO */
+  .manifesto {
+    text-align: center;
+    padding: 180px 32px;
+  }
+  .manifesto h2 {
+    margin: 0 auto 0;
+    max-width: 1100px;
+    font-size: clamp(36px, 5.5vw, 80px);
+  }
+
+  /* FAQ */
+  .faq-wrap { max-width: 880px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--rule);
+    padding: 28px 0;
+    cursor: pointer;
+    transition: padding 0.3s;
+  }
+  .faq-item:hover { padding-left: 8px; }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .faq-icon {
+    font-family: var(--mono);
+    font-size: 24px;
+    transition: transform 0.4s;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .faq-item:nth-child(1) .faq-icon { color: var(--mint); }
+  .faq-item:nth-child(2) .faq-icon { color: var(--peach); }
+  .faq-item:nth-child(3) .faq-icon { color: var(--lavender); }
+  .faq-item:nth-child(4) .faq-icon { color: var(--butter); }
+  .faq-item:nth-child(5) .faq-icon { color: var(--rose); }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding-top 0.3s;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 700px;
+  }
+  .faq-item.open .faq-a {
+    max-height: 320px;
+    padding-top: 16px;
+  }
+
+  /* FINAL CTA */
+  .final {
+    padding: 160px 32px;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .final::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 900px; height: 500px;
+    background:
+      radial-gradient(ellipse 60% 50% at 30% 40%, var(--mint-soft) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 70% 50%, var(--peach-soft) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 50% 80%, var(--lavender-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .final-headline {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(56px, 9vw, 140px);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+  .final-headline .gradient {
+    background: linear-gradient(135deg, var(--mint), var(--sky), var(--lavender), var(--peach));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .final .waitlist { margin: 0 auto; position: relative; z-index: 1; }
+  .final-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faded);
+    margin-top: 24px;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faded);
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+  }
+  footer .logo {
+    font-size: 18px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  .waitlist.success { border-color: var(--mint); }
+  .waitlist.success input { color: var(--mint); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .logo { font-size: 20px; }
+    .nav-meta { display: none; }
+    .hero { padding: 120px 20px 60px; }
+    section { padding: 80px 20px; }
+    h2 { margin-bottom: 56px; }
+    .stack {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .tier-1, .tier-2, .tier-3, .tier-4 {
+      grid-column: 1;
+      grid-row: auto;
+      min-height: auto;
+    }
+    .tier-1 .tier-name { font-size: 38px; }
+    .tier-name { font-size: 30px; }
+    .timeline { grid-template-columns: 1fr; gap: 40px; }
+    .timeline-left { position: static; }
+    .step { grid-template-columns: 60px 1fr; gap: 16px; padding: 24px 0; }
+    .step-content h3 { font-size: 22px; }
+    .manifesto { padding: 100px 20px; }
+    .final { padding: 100px 20px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Growbeaux</div>
+  <div class="nav-meta">
+    <span class="nav-meta-dot"></span>
+    <span>WAITLIST OPEN</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">A new system · For men · Coming 2026</div>
+  <h1>Lose the weight.<br><span class="gradient">Keep yourself.</span></h1>
+  <p class="hero-sub">Three dollars a month. A real protocol. No noise, no gurus, no twelve-week scams. Just the system.</p>
+  <div class="hero-cta">
+    <form class="waitlist" id="waitlist-form-1">
+      <input type="email" placeholder="enter your email" required>
+      <button type="submit">Get on the list</button>
+    </form>
+    <div class="hero-note">FOUNDING MEMBERS · LOCKED PRICING · FOR LIFE</div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Engineered for men</div>
+    <div class="ticker-item">$3/month forever</div>
+    <div class="ticker-item">Real prescribers</div>
+    <div class="ticker-item">503A pharmacy fulfillment</div>
+    <div class="ticker-item">No 12-week traps</div>
+    <div class="ticker-item">Lean mass first</div>
+    <div class="ticker-item">Engineered for men</div>
+    <div class="ticker-item">$3/month forever</div>
+    <div class="ticker-item">Real prescribers</div>
+    <div class="ticker-item">503A pharmacy fulfillment</div>
+    <div class="ticker-item">No 12-week traps</div>
+    <div class="ticker-item">Lean mass first</div>
+  </div>
+</div>
+
+<section>
+  <div class="section-tag">The stack</div>
+  <h2>Three layers.<br><span class="mint">One protocol.</span></h2>
+  <div class="stack">
+    <div class="tier tier-1">
+      <div class="tier-num">01 / FOUNDATION</div>
+      <div class="tier-name">The Group</div>
+      <div class="tier-price">$3 / MONTH</div>
+      <div class="tier-desc">The dashboard, the daily check-ins, the protocol drops, and a private brotherhood of men actually doing the work. Three dollars. Locked for life if you join early.</div>
+      <ul class="tier-features">
+        <li>Daily accountability</li>
+        <li>Weekly protocols</li>
+        <li>Members-only community</li>
+        <li>Progress tracking</li>
+        <li>Founding pricing locked</li>
+      </ul>
+    </div>
+    <div class="tier tier-2">
+      <div class="tier-num">02 / FUEL</div>
+      <div class="tier-name">Supplements</div>
+      <div class="tier-price">FROM $24 / MONTH</div>
+      <div class="tier-desc">A clean stack engineered for fat loss without losing the muscle you fought for.</div>
+    </div>
+    <div class="tier tier-3">
+      <div class="tier-num">03 / EDGE</div>
+      <div class="tier-name">Rx</div>
+      <div class="tier-price">FROM $199 / MONTH</div>
+      <div class="tier-desc">Licensed telehealth. Real GLP-1 protocols. For men who qualify.</div>
+    </div>
+    <div class="tier tier-4">
+      <div class="tier-num">04 / OPTIONAL</div>
+      <div class="tier-name">All of it.</div>
+      <div class="tier-price">YOUR CALL</div>
+      <div class="tier-desc">Use one layer. Use all three. The $3 program works on its own.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">The system</div>
+  <div class="timeline">
+    <div class="timeline-left">
+      <h2>Built around <span class="peach">male physiology</span> — not a generic template.</h2>
+      <p>Generic weight loss programs treat every body the same. Growbeaux doesn't. The protocol is built around how men actually lose fat, preserve muscle, and respond to chemistry.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Join</h3>
+          <p>$3 gets you the full program. No trial trap. No upsell wall. Just the system.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Assess</h3>
+          <p>A 5-minute intake builds your protocol. You'll know which stack tier fits before spending another dollar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Stack</h3>
+          <p>Add supplements at member pricing. Request a telehealth consult if you qualify.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Execute</h3>
+          <p>Daily check-ins. Weekly weigh-ins. Monthly review. The system holds you accountable. So do the men in here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="section-tag" style="justify-content:center">The thesis</div>
+  <h2>You don't need <span class="peach">another guru.</span> You need a system that works <span class="mint">while you don't think about it.</span></h2>
+</section>
+
+<section>
+  <div class="section-tag">Questions</div>
+  <h2>What you're <span class="lavender">actually</span> wondering.</h2>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <div class="faq-q"><span>Is $3/month real, or a bait-and-switch?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Real. Three dollars gets you the program, dashboard, and community — forever. We make money on supplements and Rx, but only if you choose to add them. The program stays $3.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>Are the peptides legal?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes. All prescription peptides are dispensed by licensed compounding pharmacies under prescriptions from licensed telehealth physicians. We don't touch research peptides or anything sold "for research only." If a prescriber doesn't write it, we don't ship it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>Why men only?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Men lose weight differently. Different protein needs, different training stimuli, different hormonal interventions. Most programs treat every body the same. Growbeaux doesn't.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>Do I need the supplements or Rx?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">No. The $3 program works on its own. Most members start there, see results, and add the stack when they're ready. Zero pressure.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span>When does it launch?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Soon. Waitlist members get first access and founding pricing locked for life.</div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="join">
+  <div class="final-headline">
+    Be one of the<br><span class="gradient">first 500.</span>
+  </div>
+  <form class="waitlist" id="waitlist-form-2">
+    <input type="email" placeholder="enter your email" required>
+    <button type="submit">Reserve my spot</button>
+  </form>
+  <div class="final-note">FOUNDING PRICING · LOCKED FOR LIFE · NO SPAM</div>
+</section>
+
+<footer>
+  <div class="logo">Growbeaux</div>
+  <div>© 2026 — A NEW SYSTEM FOR MEN</div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('open'));
+  });
+
+  function handleWaitlist(form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input');
+      const btn = form.querySelector('button');
+      const email = input.value;
+      btn.textContent = 'Saving...';
+      btn.disabled = true;
+      await new Promise(r => setTimeout(r, 700));
+      form.classList.add('success');
+      btn.textContent = "You're in";
+      input.value = '';
+      input.placeholder = 'see you at launch';
+      console.log('Waitlist signup:', email);
+    });
+  }
+  document.querySelectorAll('.waitlist').forEach(handleWaitlist);
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
