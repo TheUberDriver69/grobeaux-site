@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science · Growbeaux</title>
+<meta name="description" content="What's actually backing the protocol.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b14; --bg-1: #17131f; --bg-2: #1f1a2b;
+    --ink: #f5f0f5; --ink-soft: #b8adc4; --ink-faded: #6a5f7a;
+    --mint: #a8e6cf; --peach: #ffb7a0; --lavender: #c8b6ff; --sky: #a0d8ff;
+    --rule: rgba(245,240,245,0.08); --rule-strong: rgba(245,240,245,0.18);
+    --sans: 'Geist', -apple-system, sans-serif;
+    --mono: 'Geist Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; top: -30vh; left: 0; width: 100vw; height: 120vh;
+    pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 50% 50% at 30% 30%, rgba(200,182,255,0.10), transparent 70%);
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(24px); background: rgba(14,11,20,0.6); border-bottom: 1px solid var(--rule);
+  }
+  .logo { font-family: var(--sans); font-weight: 800; font-size: 22px; letter-spacing: -0.03em; color: #fff; text-decoration: none; }
+  .nav-back {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-soft);
+    letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; font-weight: 500;
+  }
+  .nav-back:hover { color: var(--mint); }
+
+  main { position: relative; z-index: 2; padding: 140px 32px 80px; max-width: 800px; margin: 0 auto; }
+
+  .tag {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-faded);
+    letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+  }
+  .tag::before { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, var(--mint), var(--lavender)); }
+
+  h1 {
+    font-family: var(--sans); font-weight: 800;
+    font-size: clamp(48px, 7vw, 88px); line-height: 1; letter-spacing: -0.04em;
+    margin-bottom: 24px;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, var(--lavender), var(--sky));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .lede {
+    font-size: 20px; color: var(--ink-soft); line-height: 1.55;
+    margin-bottom: 56px;
+  }
+
+  /* Pillar cards */
+  .pillars { display: grid; gap: 16px; margin-bottom: 64px; }
+  .pillar {
+    padding: 28px 32px;
+    border-radius: 20px;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .pillar-num {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.15em; font-weight: 600; margin-bottom: 12px;
+  }
+  .pillar:nth-child(1) .pillar-num { color: var(--mint); }
+  .pillar:nth-child(2) .pillar-num { color: var(--peach); }
+  .pillar:nth-child(3) .pillar-num { color: var(--lavender); }
+  .pillar:nth-child(4) .pillar-num { color: var(--sky); }
+
+  .pillar h3 {
+    font-family: var(--sans); font-weight: 800; font-size: 24px;
+    letter-spacing: -0.025em; margin-bottom: 12px; line-height: 1.15;
+  }
+  .pillar p {
+    font-size: 15px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 12px;
+  }
+  .pillar p:last-of-type { margin-bottom: 0; }
+  .pillar p strong { color: var(--ink); font-weight: 600; }
+
+  .citations {
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-faded); letter-spacing: 0.05em;
+  }
+  .citations span { color: var(--ink-soft); }
+
+  /* Disclaimer */
+  .disclaimer {
+    margin: 48px 0;
+    padding: 24px 28px;
+    border-radius: 16px;
+    background: rgba(255,183,160,0.06);
+    border: 1px solid rgba(255,183,160,0.2);
+  }
+  .disclaimer-tag {
+    font-family: var(--mono); font-size: 10px; color: var(--peach);
+    letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .disclaimer p {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin: 0;
+  }
+
+  h2 {
+    font-family: var(--sans); font-weight: 800; font-size: 28px;
+    letter-spacing: -0.025em; margin: 64px 0 16px;
+  }
+
+  .references {
+    list-style: none;
+    padding: 0;
+  }
+  .references li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px; color: var(--ink-soft); line-height: 1.55;
+  }
+  .references li:last-child { border-bottom: none; }
+  .references li strong { color: var(--ink); font-weight: 600; }
+  .references .ref-source {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-faded);
+    letter-spacing: 0.05em; margin-top: 4px; display: block;
+  }
+
+  .end-cta {
+    margin-top: 80px;
+    padding: 40px 32px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.06), rgba(200,182,255,0.06));
+    border: 1px solid var(--rule);
+    text-align: center;
+  }
+  .end-cta h3 {
+    font-family: var(--sans); font-weight: 800; font-size: 24px;
+    letter-spacing: -0.03em; margin-bottom: 8px;
+  }
+  .end-cta p { font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; }
+  .end-cta a {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg); font-weight: 700; font-size: 13px;
+    letter-spacing: -0.01em; border-radius: 999px; text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .end-cta a:hover { transform: translateY(-1px); }
+
+  footer {
+    padding: 32px; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    color: var(--ink-faded); font-weight: 500; position: relative; z-index: 2;
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--ink-faded); text-decoration: none; }
+  .footer-links a:hover { color: var(--mint); }
+  footer .logo { font-size: 18px; }
+
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .logo { font-size: 20px; }
+    main { padding: 110px 20px 60px; }
+    .lede { font-size: 17px; }
+    .pillar { padding: 24px; }
+    .pillar h3 { font-size: 20px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Growbeaux</a>
+  <a href="/" class="nav-back">← Home</a>
+</nav>
+
+<main>
+  <div class="tag">Science</div>
+  <h1>What's <span class="accent">actually</span> backing this.</h1>
+
+  <p class="lede">No buzzwords, no fake studies, no "scientifically proven" with nothing behind it. Here's the real research the protocol is built on — in plain English.</p>
+
+  <div class="pillars">
+
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 01</div>
+      <h3>Protein preserves muscle during a cut.</h3>
+      <p>Men cutting calories without enough protein lose roughly equal parts fat and lean muscle. Men cutting with <strong>0.8–1.0 g/lb of bodyweight in protein per day</strong> retain muscle while losing fat — even on aggressive deficits.</p>
+      <p>This is why the program targets a specific protein number based on your weight, instead of just cutting calories.</p>
+      <div class="citations"><span>SOURCES:</span> Helms et al. 2014 · Longland et al. 2016 · Murphy et al. 2018</div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 02</div>
+      <h3>Resistance training beats cardio for body composition.</h3>
+      <p>For fat loss <em>and</em> aesthetic goals (the look you're actually after), <strong>2–4 strength sessions per week</strong> outperform cardio-heavy programs. You burn fewer calories during the workout, but more across the day, and you keep the muscle that gives shape to a leaner body.</p>
+      <p>The program prioritizes strength. Cardio is supplemental, not central.</p>
+      <div class="citations"><span>SOURCES:</span> Willis et al. 2012 · Schoenfeld et al. 2017</div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 03</div>
+      <h3>Sleep is the most underrated weight loss tool.</h3>
+      <p>Men sleeping under 6 hours regulate appetite hormones (leptin, ghrelin) so poorly that they can lose <strong>twice as much muscle</strong> on the same diet as men sleeping 8+ hours. They also report higher hunger and worse adherence.</p>
+      <p>Sleep gets a daily check-in slot for a reason. It's not optional.</p>
+      <div class="citations"><span>SOURCES:</span> Nedeltcheva et al. 2010 · Spiegel et al. 2004</div>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 04</div>
+      <h3>GLP-1 protocols work. With caveats.</h3>
+      <p>Semaglutide and tirzepatide produce <strong>15–20%+ body weight loss</strong> in clinical trials when combined with lifestyle changes. They work best when paired with a high-protein diet and resistance training — not as standalone fixes.</p>
+      <p>Without protein and training, GLP-1 users lose disproportionate muscle. With them, the medication accelerates a sustainable cut. That's why we route Rx through licensed prescribers who require lifestyle context.</p>
+      <div class="citations"><span>SOURCES:</span> Wilding et al. (STEP-1) 2021 · Jastreboff et al. (SURMOUNT-1) 2022</div>
+    </div>
+
+  </div>
+
+  <div class="disclaimer">
+    <div class="disclaimer-tag">Real talk</div>
+    <p>Growbeaux isn't a medical provider. Nothing on this page is medical advice. Prescription decisions are made by licensed physicians through our telehealth partner, based on your labs, history, and goals. We provide education, structure, and accountability. The science above is meant to inform your decisions — not replace a real consultation.</p>
+  </div>
+
+  <h2>Want to dig deeper?</h2>
+  <ul class="references">
+    <li>
+      <strong>Helms et al. 2014</strong> — Evidence-based recommendations for natural bodybuilding contest preparation: nutrition and supplementation.
+      <span class="ref-source">JOURNAL OF THE INTERNATIONAL SOCIETY OF SPORTS NUTRITION</span>
+    </li>
+    <li>
+      <strong>Longland et al. 2016</strong> — Higher compared with lower dietary protein during an energy deficit combined with intense exercise promotes greater lean mass gain and fat mass loss.
+      <span class="ref-source">AMERICAN JOURNAL OF CLINICAL NUTRITION</span>
+    </li>
+    <li>
+      <strong>Wilding et al. 2021 (STEP-1)</strong> — Once-weekly semaglutide in adults with overweight or obesity.
+      <span class="ref-source">NEW ENGLAND JOURNAL OF MEDICINE</span>
+    </li>
+    <li>
+      <strong>Jastreboff et al. 2022 (SURMOUNT-1)</strong> — Tirzepatide once weekly for the treatment of obesity.
+      <span class="ref-source">NEW ENGLAND JOURNAL OF MEDICINE</span>
+    </li>
+    <li>
+      <strong>Nedeltcheva et al. 2010</strong> — Insufficient sleep undermines dietary efforts to reduce adiposity.
+      <span class="ref-source">ANNALS OF INTERNAL MEDICINE</span>
+    </li>
+  </ul>
+
+  <div class="end-cta">
+    <h3>The science says it works.</h3>
+    <p>The program puts it in practice — for $3/month.</p>
+    <a href="/#join">Join the waitlist →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="logo">Growbeaux</div>
+  <div class="footer-links">
+    <a href="/shop">Shop</a>
+    <a href="/about">About</a>
+    <a href="/science">Science</a>
+    <a href="/contact">Contact</a>
+  </div>
+  <div>© 2026</div>
+</footer>
+
+</body>
+</html>
