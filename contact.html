@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact · Growbeaux</title>
+<meta name="description" content="Get in touch with the Growbeaux team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b14; --bg-1: #17131f; --bg-2: #1f1a2b;
+    --ink: #f5f0f5; --ink-soft: #b8adc4; --ink-faded: #6a5f7a;
+    --mint: #a8e6cf; --peach: #ffb7a0; --lavender: #c8b6ff; --sky: #a0d8ff;
+    --rule: rgba(245,240,245,0.08); --rule-strong: rgba(245,240,245,0.18);
+    --sans: 'Geist', -apple-system, sans-serif;
+    --mono: 'Geist Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; top: -30vh; left: 0; width: 100vw; height: 120vh;
+    pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 50% 50% at 50% 30%, rgba(168,230,207,0.10), transparent 70%);
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(24px); background: rgba(14,11,20,0.6); border-bottom: 1px solid var(--rule);
+  }
+  .logo { font-family: var(--sans); font-weight: 800; font-size: 22px; letter-spacing: -0.03em; color: #fff; text-decoration: none; }
+  .nav-back {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-soft);
+    letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; font-weight: 500;
+  }
+  .nav-back:hover { color: var(--mint); }
+
+  .menu-wrap { position: relative; }
+  .menu-trigger {
+    display: flex; align-items: center; gap: 8px;
+    background: transparent; border: 1px solid var(--rule-strong); color: var(--ink);
+    font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: -0.01em;
+    padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all 0.2s;
+  }
+  .menu-trigger:hover { border-color: var(--mint); background: rgba(168,230,207,0.12); }
+  .menu-trigger svg { transition: transform 0.2s; }
+  .menu-trigger.open svg { transform: rotate(180deg); }
+
+  .dropdown {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    min-width: 220px; background: var(--bg-1);
+    border: 1px solid var(--rule-strong); border-radius: 16px; padding: 8px;
+    opacity: 0; pointer-events: none; transform: translateY(-4px);
+    transition: all 0.2s; backdrop-filter: blur(20px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    z-index: 60;
+  }
+  .dropdown.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .dropdown a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-radius: 10px; color: var(--ink); text-decoration: none;
+    font-family: var(--sans); font-weight: 500; font-size: 14px; transition: all 0.15s;
+  }
+  .dropdown a:hover { background: rgba(168,230,207,0.12); color: var(--mint); }
+  .dropdown a .arrow { color: var(--ink-faded); font-family: var(--mono); transition: transform 0.15s; }
+  .dropdown a:hover .arrow { color: var(--mint); transform: translateX(2px); }
+
+  main { position: relative; z-index: 2; padding: 140px 32px 80px; max-width: 720px; margin: 0 auto; }
+
+  .tag {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-faded);
+    letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+  }
+  .tag::before { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, var(--mint), var(--lavender)); }
+
+  h1 {
+    font-family: var(--sans); font-weight: 800;
+    font-size: clamp(48px, 7vw, 88px); line-height: 1; letter-spacing: -0.04em;
+    margin-bottom: 24px;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .lede {
+    font-size: 18px; color: var(--ink-soft); line-height: 1.6;
+    margin-bottom: 56px;
+  }
+
+  /* Reason cards */
+  .reasons { display: grid; gap: 12px; margin-bottom: 56px; }
+  .reason {
+    display: flex; align-items: center; gap: 20px;
+    padding: 24px; border-radius: 16px;
+    background: var(--bg-1); border: 1px solid var(--rule);
+    text-decoration: none; color: var(--ink);
+    transition: all 0.2s;
+  }
+  .reason:hover {
+    border-color: var(--mint);
+    transform: translateY(-1px);
+    background: var(--bg-2);
+  }
+  .reason-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--sans); font-weight: 800; font-size: 20px;
+  }
+  .reason-content { flex: 1; }
+  .reason-content h3 {
+    font-family: var(--sans); font-weight: 700; font-size: 16px;
+    letter-spacing: -0.01em; margin-bottom: 2px;
+  }
+  .reason-content p { font-size: 13px; color: var(--ink-soft); margin: 0; }
+  .reason-arrow {
+    font-family: var(--mono); font-size: 14px; color: var(--ink-faded);
+    transition: all 0.2s;
+  }
+  .reason:hover .reason-arrow { color: var(--mint); transform: translateX(2px); }
+
+  /* Form */
+  .form-section {
+    padding: 32px;
+    border-radius: 24px;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+  }
+  .form-section h2 {
+    font-family: var(--sans); font-weight: 800; font-size: 24px;
+    letter-spacing: -0.025em; margin-bottom: 8px;
+  }
+  .form-section > p {
+    font-size: 14px; color: var(--ink-soft); margin-bottom: 24px;
+  }
+
+  .form-row { display: grid; gap: 12px; margin-bottom: 12px; }
+  .form-row.two { grid-template-columns: 1fr 1fr; }
+
+  label {
+    display: block;
+    font-family: var(--mono); font-size: 10px; color: var(--ink-faded);
+    letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 6px;
+  }
+  input, textarea, select {
+    width: 100%; padding: 14px 16px;
+    background: var(--bg); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 12px;
+    font-family: var(--sans); font-size: 15px;
+    outline: none; transition: all 0.2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--mint); box-shadow: 0 0 0 4px rgba(168,230,207,0.1);
+  }
+  textarea { resize: vertical; min-height: 120px; font-family: var(--sans); }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4 L6 8 L10 4' stroke='%236a5f7a' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg); border: none; border-radius: 12px;
+    font-family: var(--sans); font-weight: 700; font-size: 15px;
+    letter-spacing: -0.01em; cursor: pointer; transition: all 0.2s;
+    margin-top: 8px;
+  }
+  button[type="submit"]:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(168,230,207,0.2); }
+  button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .form-note {
+    font-family: var(--mono); font-size: 10px; color: var(--ink-faded);
+    letter-spacing: 0.05em; text-align: center; margin-top: 16px;
+  }
+
+  .success {
+    text-align: center; padding: 40px 20px;
+  }
+  .success h3 {
+    font-family: var(--sans); font-weight: 800; font-size: 28px;
+    letter-spacing: -0.03em; margin-bottom: 8px; color: var(--mint);
+  }
+  .success p { font-size: 14px; color: var(--ink-soft); }
+
+  footer {
+    padding: 32px; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    color: var(--ink-faded); font-weight: 500; position: relative; z-index: 2;
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--ink-faded); text-decoration: none; }
+  .footer-links a:hover { color: var(--mint); }
+  footer .logo { font-size: 18px; }
+
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .logo { font-size: 20px; }
+    main { padding: 110px 20px 60px; }
+    .form-row.two { grid-template-columns: 1fr; }
+    .form-section { padding: 24px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Growbeaux</a>
+  <div class="menu-wrap">
+    <button class="menu-trigger" id="menu-trigger">
+      <span>Menu</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="dropdown" id="dropdown">
+      <a href="/"><span>Home</span><span class="arrow">→</span></a>
+      <a href="/shop"><span>Shop</span><span class="arrow">→</span></a>
+      <a href="/#how"><span>How it works</span><span class="arrow">→</span></a>
+      <a href="/about"><span>About</span><span class="arrow">→</span></a>
+      <a href="/#faq"><span>FAQ</span><span class="arrow">→</span></a>
+      <a href="/science"><span>Science</span><span class="arrow">→</span></a>
+      <a href="/contact"><span>Contact</span><span class="arrow">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="tag">Contact</div>
+  <h1>Talk to <span class="accent">us.</span></h1>
+
+  <p class="lede">Real humans on the other end. We'll read every message and respond within 1-2 business days. Pick a channel below or send the form.</p>
+
+  <div class="reasons">
+    <a href="mailto:hello@growbeaux.com" class="reason">
+      <div class="reason-icon" style="background: rgba(168,230,207,0.15); color: var(--mint);">✉</div>
+      <div class="reason-content">
+        <h3>General · hello@growbeaux.com</h3>
+        <p>Questions, feedback, anything else.</p>
+      </div>
+      <span class="reason-arrow">→</span>
+    </a>
+    <a href="mailto:partners@growbeaux.com" class="reason">
+      <div class="reason-icon" style="background: rgba(255,183,160,0.15); color: var(--peach);">⌘</div>
+      <div class="reason-content">
+        <h3>Partners · partners@growbeaux.com</h3>
+        <p>Telehealth, pharmacy, supplement manufacturing.</p>
+      </div>
+      <span class="reason-arrow">→</span>
+    </a>
+    <a href="mailto:press@growbeaux.com" class="reason">
+      <div class="reason-icon" style="background: rgba(200,182,255,0.15); color: var(--lavender);">◊</div>
+      <div class="reason-content">
+        <h3>Press · press@growbeaux.com</h3>
+        <p>Media inquiries and brand kit requests.</p>
+      </div>
+      <span class="reason-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="form-section" id="form-wrap">
+    <h2>Or send a message.</h2>
+    <p>We'll route it to the right person.</p>
+
+    <form id="contact-form">
+      <div class="form-row two">
+        <div>
+          <label>Name</label>
+          <input type="text" name="name" required>
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label>What's this about?</label>
+          <select name="topic" required>
+            <option value="">Pick one</option>
+            <option value="general">General question</option>
+            <option value="support">Member support</option>
+            <option value="partnership">Partnership / business</option>
+            <option value="press">Press inquiry</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label>Message</label>
+          <textarea name="message" placeholder="Keep it short — we'll reply faster." required></textarea>
+        </div>
+      </div>
+
+      <button type="submit">Send message</button>
+      <div class="form-note">USUALLY REPLY WITHIN 24-48 HOURS</div>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div class="logo">Growbeaux</div>
+  <div class="footer-links">
+    <a href="/shop">Shop</a>
+    <a href="/about">About</a>
+    <a href="/science">Science</a>
+    <a href="/contact">Contact</a>
+  </div>
+  <div>© 2026</div>
+</footer>
+
+<script>
+  const trigger = document.getElementById("menu-trigger");
+  const dropdown = document.getElementById("dropdown");
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    trigger.classList.toggle("open");
+    dropdown.classList.toggle("open");
+  });
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target) && !trigger.contains(e.target)) {
+      trigger.classList.remove("open");
+      dropdown.classList.remove("open");
+    }
+  });
+
+  const form = document.getElementById('contact-form');
+  const wrap = document.getElementById('form-wrap');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    // TODO: wire to a real backend (Resend, Formspree, ConvertKit, etc.)
+    // For now, simulate success
+    await new Promise(r => setTimeout(r, 800));
+
+    const data = new FormData(form);
+    console.log('Contact submission:', Object.fromEntries(data));
+
+    wrap.innerHTML = `
+      <div class="success">
+        <h3>Got it ✓</h3>
+        <p>We'll be in touch within 1-2 business days.</p>
+      </div>
+    `;
+  });
+</script>
+
+</body>
+</html>
