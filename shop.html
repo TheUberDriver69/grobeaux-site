@@ -1,0 +1,3202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop · Growbeaux</title>
+<meta name="description" content="Fifteen launch SKUs across daily essentials, performance, recovery, and respiratory. Member pricing on every item. Launching Q3 2026.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growbeaux.com/shop">
+<meta property="og:title" content="Shop — Growbeaux">
+<meta property="og:description" content="15 men's supplements at member pricing. Built for fat loss, lean mass, sleep, and respiratory health.">
+<meta property="og:image" content="https://growbeaux.com/og-image.jpg">
+<meta property="og:site_name" content="Growbeaux">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://growbeaux.com/shop">
+<meta name="twitter:title" content="Shop — Growbeaux">
+<meta name="twitter:description" content="15 men's supplements at member pricing. Built for fat loss, lean mass, sleep, and respiratory health.">
+<meta name="twitter:image" content="https://growbeaux.com/og-image.jpg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://growbeaux.com/shop">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0e0b14">
+<meta name="apple-mobile-web-app-title" content="Growbeaux">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b14;
+    --bg-1: #17131f;
+    --bg-2: #1f1a2b;
+    --ink: #f5f0f5;
+    --ink-soft: #b8adc4;
+    --ink-faded: #6a5f7a;
+    --mint: #a8e6cf;
+    --peach: #ffb7a0;
+    --lavender: #c8b6ff;
+    --sky: #a0d8ff;
+    --rose: #ffb3d1;
+    --rule: rgba(245,240,245,0.08);
+    --rule-strong: rgba(245,240,245,0.18);
+    --sans: 'Geist', -apple-system, sans-serif;
+    --mono: 'Geist Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    top: -30vh; left: 0;
+    width: 100vw; height: 120vh;
+    background:
+      radial-gradient(ellipse 40% 40% at 20% 20%, rgba(168,230,207,0.08), transparent 70%),
+      radial-gradient(ellipse 35% 35% at 80% 30%, rgba(255,183,160,0.08), transparent 70%),
+      radial-gradient(ellipse 45% 45% at 50% 80%, rgba(200,182,255,0.10), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(24px);
+    background: rgba(14,11,20,0.6);
+    border-bottom: 1px solid var(--rule);
+  }
+  .logo {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-back {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .nav-back:hover { color: var(--mint); }
+
+  .menu-wrap { position: relative; }
+  .menu-trigger {
+    display: flex; align-items: center; gap: 8px;
+    background: transparent; border: 1px solid var(--rule-strong); color: var(--ink);
+    font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: -0.01em;
+    padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all 0.2s;
+  }
+  .menu-trigger:hover { border-color: var(--mint); background: rgba(168,230,207,0.12); }
+  .menu-trigger svg { transition: transform 0.2s; }
+  .menu-trigger.open svg { transform: rotate(180deg); }
+
+  .dropdown {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    min-width: 220px; background: var(--bg-1);
+    border: 1px solid var(--rule-strong); border-radius: 16px; padding: 8px;
+    opacity: 0; pointer-events: none; transform: translateY(-4px);
+    transition: all 0.2s; backdrop-filter: blur(20px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    z-index: 60;
+  }
+  .dropdown.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .dropdown a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-radius: 10px; color: var(--ink); text-decoration: none;
+    font-family: var(--sans); font-weight: 500; font-size: 14px; transition: all 0.15s;
+  }
+  .dropdown a:hover { background: rgba(168,230,207,0.12); color: var(--mint); }
+  .dropdown a .arrow { color: var(--ink-faded); font-family: var(--mono); transition: transform 0.15s; }
+  .dropdown a:hover .arrow { color: var(--mint); transform: translateX(2px); }
+
+  /* The Group CTA — primary action in dropdown */
+  .dropdown a.dropdown-cta {
+    margin-top: 8px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.12), rgba(160,216,255,0.08));
+    border: 1px solid rgba(168,230,207,0.25);
+    color: var(--mint);
+    font-weight: 600;
+  }
+  .dropdown a.dropdown-cta:hover {
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg);
+    border-color: var(--mint);
+  }
+  .dropdown a.dropdown-cta .arrow {
+    color: var(--mint);
+  }
+  .dropdown a.dropdown-cta:hover .arrow {
+    color: var(--bg);
+  }
+
+  main {
+    position: relative;
+    z-index: 2;
+    padding: 140px 32px 200px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tag { display: inline-block; font-family: var(--sans); font-size: 12px; color: var(--ink-faded); letter-spacing: 0.04em; font-weight: 500; margin-bottom: 24px; opacity: 0.85; }
+  .tag::before, .tag::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--mint), var(--lavender));
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(56px, 9vw, 120px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  h1 .gradient {
+    background: linear-gradient(135deg, var(--mint), var(--sky), var(--lavender));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subhead {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 18px;
+    max-width: 540px;
+    margin: 0 auto 60px;
+    line-height: 1.6;
+  }
+
+  .discount-banner {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    padding: 24px 28px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.12), rgba(200,182,255,0.12));
+    border: 1px solid rgba(168,230,207,0.3);
+    display: none;
+    align-items: center;
+    gap: 20px;
+    animation: slideDown 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .discount-banner.visible { display: flex; }
+  .discount-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: rgba(168,230,207,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--mint);
+    letter-spacing: -0.02em;
+  }
+  .discount-info { flex: 1; }
+  .discount-info p:first-child {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mint);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .discount-info p:last-child { color: var(--ink-soft); font-size: 14px; }
+  .discount-info strong {
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--ink);
+    background: rgba(255,255,255,0.05);
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-right: 6px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .stack-builder {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    padding: 48px 40px;
+    border-radius: 32px;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+  }
+  .stack-builder-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .stack-builder-header h2 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .stack-builder-header h2 .accent {
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stack-builder-header p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .goal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .goal-btn {
+    position: relative;
+    aspect-ratio: 600 / 1032;
+    border-radius: 18px;
+    overflow: hidden;
+    background-color: #0e0b14;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+    padding: 0;
+    min-height: 320px;
+  }
+  .goal-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 0 rgba(168,230,207,0);
+    transition: box-shadow 0.3s, background-color 0.3s;
+    pointer-events: none;
+  }
+  .goal-btn:hover { transform: translateY(-2px); border-color: var(--rule-strong); }
+  .goal-btn.active {
+    border-color: var(--mint);
+  }
+  .goal-btn.active::after {
+    box-shadow: inset 0 0 0 2px var(--mint);
+    background-color: rgba(168,230,207,0.06);
+  }
+  .goal-btn[data-goal="cut"]    { background-image: url('/goal-cut.jpg'); }
+  .goal-btn[data-goal="recomp"] { background-image: url('/goal-recomp.jpg'); }
+  .goal-btn[data-goal="build"]  { background-image: url('/goal-build.jpg'); }
+  .goal-btn[data-goal="reset"]  { background-image: url('/goal-reset.jpg'); }
+  .goal-btn-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .recommendations {
+    margin-top: 32px;
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+  .recommendations.visible { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .rec-section { margin-bottom: 32px; }
+  .rec-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .rec-section-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    font-weight: 600;
+  }
+
+  .rec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .rec-item {
+    padding: 18px;
+    border-radius: 16px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    transition: all 0.2s;
+  }
+  .rec-item:hover {
+    border-color: var(--rule-strong);
+    transform: translateY(-1px);
+  }
+  .rec-item-tier {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .tier-core { color: var(--mint); }
+  .tier-supp { color: var(--peach); }
+  .rec-item-name {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .rec-item-desc {
+    color: var(--ink-soft);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+    text-decoration: none;
+    color: inherit;
+  }
+  .card:hover {
+    border-color: var(--rule-strong);
+    transform: translateY(-2px);
+    background: var(--bg-2);
+  }
+  .card.supplements::after {
+    content: '';
+    position: absolute;
+    top: -40%; right: -40%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,183,160,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .card.recovery::after {
+    content: '';
+    position: absolute;
+    top: -40%; right: -40%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,182,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .card-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faded);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .card h2 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 44px;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 360px;
+  }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--rule-strong);
+    transition: all 0.2s;
+  }
+  .supplements .card-cta { color: var(--peach); }
+  .supplements:hover .card-cta { background: rgba(255,183,160,0.12); border-color: var(--peach); }
+  .recovery .card-cta { color: var(--lavender); }
+  .recovery:hover .card-cta { background: rgba(200,182,255,0.12); border-color: var(--lavender); }
+
+  .badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .section-header h2 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .section-header p { color: var(--ink-soft); font-size: 15px; }
+
+  /* ============== AI STACK INPUT ============== */
+  .ai-stack-input-wrap {
+    margin-top: 24px;
+    padding: 24px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.04), rgba(160,216,255,0.04));
+    border: 1px solid var(--rule);
+  }
+  .ai-stack-label {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    color: var(--mint);
+    font-weight: 500;
+    margin-bottom: 12px;
+    opacity: 0.9;
+  }
+  .ai-stack-input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .ai-stack-input {
+    flex: 1;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    transition: border-color 0.2s;
+  }
+  .ai-stack-input:focus {
+    outline: none;
+    border-color: var(--mint);
+  }
+  .ai-stack-input::placeholder {
+    color: var(--ink-faded);
+  }
+  .ai-stack-submit {
+    padding: 14px 20px;
+    background: var(--mint);
+    color: var(--bg);
+    border: none;
+    border-radius: 12px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .ai-stack-submit:hover { transform: translateY(-1px); }
+  .ai-stack-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .ai-stack-examples > span {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    margin-right: 4px;
+  }
+  .ai-stack-chip {
+    padding: 6px 12px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ai-stack-chip:hover {
+    border-color: var(--mint);
+    color: var(--mint);
+  }
+  @media (max-width: 600px) {
+    .ai-stack-input-row { flex-direction: column; }
+  }
+
+  /* ============== UPDATED REC ITEMS (with pricing + add) ============== */
+  .rec-section-h {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .rec-section-sub {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .rec-item {
+    padding: 18px;
+    border-radius: 16px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    transition: border-color 0.2s;
+  }
+  .rec-item:hover { border-color: var(--rule-strong); }
+  .rec-item-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rec-item-info { flex: 1; min-width: 0; }
+  .rec-item-name {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+  }
+  .rec-item-desc {
+    color: var(--ink-soft);
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .rec-item-pricing {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .rec-item-member {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--mint);
+  }
+  .rec-item-retail {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faded);
+    text-decoration: line-through;
+  }
+  .rec-item-save {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--peach);
+    font-weight: 600;
+  }
+  .rec-item-add {
+    padding: 10px 14px;
+    background: transparent;
+    color: var(--mint);
+    border: 1px solid var(--mint);
+    border-radius: 10px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .rec-item-add:hover {
+    background: var(--mint);
+    color: var(--bg);
+  }
+
+  /* ============== CATEGORY HEADERS ============== */
+  /* Preview imagery disclosure */
+  .preview-disclosure {
+    max-width: 1200px;
+    margin: 0 auto 48px;
+    padding: 14px 20px;
+    background: rgba(255,217,125,0.05);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .preview-disclosure-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .preview-disclosure-text {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .preview-disclosure-text a {
+    color: var(--mint);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(168,230,207,0.3);
+    transition: border-color 0.15s;
+  }
+  .preview-disclosure-text a:hover {
+    border-bottom-color: var(--mint);
+  }
+  @media (max-width: 700px) {
+    .preview-disclosure { padding: 12px 16px; gap: 10px; }
+    .preview-disclosure-text { font-size: 12px; }
+  }
+
+  .category-header {
+    margin: 56px 0 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .category-header:first-of-type {
+    margin-top: 32px;
+  }
+  .category-tag {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    color: var(--mint);
+    font-weight: 500;
+    opacity: 0.9;
+  }
+  .category-header h3 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    margin: 6px 0 4px;
+  }
+  .category-header p {
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  .respiratory-header .category-tag { color: var(--sky); }
+  .respiratory-header h3 {
+    background: linear-gradient(135deg, var(--sky), var(--mint));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ============== RESPIRATORY CARD STYLING ============== */
+  .respiratory-card {
+    background: linear-gradient(135deg, rgba(160,216,255,0.04), rgba(168,230,207,0.04));
+    border-color: rgba(160,216,255,0.15);
+  }
+  .respiratory-card:hover {
+    border-color: rgba(160,216,255,0.3);
+  }
+  .respiratory-icon {
+    /* photo backgrounds applied via data-product attribute */
+  }
+  .featured-badge {
+    background: rgba(160,216,255,0.15) !important;
+    color: var(--sky) !important;
+    border-color: rgba(160,216,255,0.4) !important;
+  }
+
+  /* ============== RESPIRATORY DISCLAIMER ============== */
+  .respiratory-disclaimer {
+    margin: 24px 0 32px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--rule);
+  }
+  .respiratory-disclaimer p {
+    color: var(--ink-faded);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .respiratory-disclaimer strong {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  /* ============== PRODUCT CARDS ============== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 700px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .product-icon { height: 240px; }
+    .product-card-body { padding: 20px 22px 24px; }
+  }
+  .product-card {
+    position: relative;
+    padding: 0;
+    border-radius: 22px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    transition: all 0.2s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card-body {
+    padding: 24px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .product-card:hover {
+    border-color: var(--rule-strong);
+    transform: translateY(-2px);
+  }
+  .product-card:hover .product-icon {
+    transform: scale(1.03);
+  }
+  .product-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 4px 10px;
+    background: rgba(14,11,20,0.85);
+    backdrop-filter: blur(8px);
+    color: var(--mint);
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    border-radius: 999px;
+    border: 1px solid rgba(168,230,207,0.3);
+    z-index: 2;
+  }
+  .product-icon {
+    width: 100%;
+    height: 280px;
+    border-radius: 0;
+    background-color: var(--bg-1);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: transparent;
+    font-size: 0;
+    margin-bottom: 0;
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+    flex-shrink: 0;
+  }
+  /* Photo backgrounds for each product */
+  .product-icon[data-product="multiGummy"]    { background-image: url('/product-multiGummy.jpg'); }
+  .product-icon[data-product="omega"]         { background-image: url('/product-omega.jpg'); }
+  .product-icon[data-product="creatine"]      { background-image: url('/product-creatine.jpg'); }
+  .product-icon[data-product="creatineGummies"]{ background-image: url('/product-creatineGummies.jpg'); }
+  .product-icon[data-product="collagen"]      { background-image: url('/product-collagen.jpg'); }
+  .product-icon[data-product="probiotic"]     { background-image: url('/product-probiotic.jpg'); }
+  .product-icon[data-product="beefLiver"]     { background-image: url('/product-beefLiver.jpg'); }
+  .product-icon[data-product="protein"]       { background-image: url('/product-protein.jpg'); }
+  .product-icon[data-product="electrolytes"]  { background-image: url('/product-electrolytes.jpg'); }
+  .product-icon[data-product="sleep"]         { background-image: url('/product-sleep.jpg'); }
+  .product-icon[data-product="ashwagandha"]   { background-image: url('/product-ashwagandha.jpg'); }
+  .product-icon[data-product="lungDaily"]     { background-image: url('/product-lungDaily.jpg'); }
+  .product-icon[data-product="lungCleanse"]   { background-image: url('/product-lungCleanse.jpg'); }
+  .product-icon[data-product="breatheDrops"]  { background-image: url('/product-breatheDrops.jpg'); }
+  .product-icon[data-product="lungTea"]       { background-image: url('/product-lungTea.jpg'); }
+  .product-num {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: var(--ink-faded);
+    font-weight: 500;
+    margin-bottom: 6px;
+    opacity: 0.85;
+  }
+  .product-name {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .product-tagline {
+    color: var(--mint);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .product-desc {
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+  .product-pricing {
+    margin-bottom: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .product-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .product-member-price {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .product-retail-price {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ink-faded);
+    text-decoration: line-through;
+  }
+  .product-period {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faded);
+  }
+  .product-save {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--peach);
+    font-weight: 600;
+  }
+  .product-card-add {
+    width: 100%;
+    padding: 14px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: 12px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .product-card-add:hover { transform: translateY(-1px); }
+
+  /* ============== STICKY BUNDLE BAR ============== */
+  .bundle-bar {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    width: calc(100% - 32px);
+    max-width: 720px;
+    z-index: 100;
+    background: rgba(20, 16, 28, 0.96);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--rule-strong);
+    border-radius: 22px;
+    padding: 18px 22px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .bundle-bar.visible {
+    transform: translateX(-50%) translateY(0);
+  }
+  .bundle-bar-close {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.15s;
+    z-index: 2;
+  }
+  .bundle-bar-close:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--ink);
+  }
+
+  /* ============== FLOATING CART BUTTON (FAB) ============== */
+  .cart-fab {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    z-index: 99;
+    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .cart-fab.visible { display: flex; }
+  .cart-fab:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+  }
+  .cart-fab-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    background: var(--peach);
+    color: var(--bg);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg);
+  }
+  .cart-fab-badge:empty,
+  .cart-fab-badge[data-count="0"] { display: none; }
+  .bundle-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-left: 36px;
+  }
+  .bundle-bar-title {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .bundle-bar-label {
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+  }
+  .bundle-bar-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mint);
+  }
+  .bundle-bar-toggle {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .bundle-bar-list {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin: 14px 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    max-height: 240px;
+    overflow-y: auto;
+  }
+  .bundle-bar-list.expanded { display: flex; }
+  .bundle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+  }
+  .bundle-item-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .bundle-item-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bundle-item-name {
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .bundle-item-price {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mint);
+  }
+  .bundle-item-remove {
+    background: transparent;
+    border: none;
+    color: var(--ink-faded);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .bundle-item-remove:hover {
+    color: var(--ink);
+    background: var(--rule);
+  }
+  .bundle-bar-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    gap: 12px;
+  }
+  .bundle-bar-total {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .bundle-bar-total-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+  }
+  .bundle-bar-total-amt {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .bundle-bar-total-savings {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--peach);
+    font-weight: 600;
+  }
+  .bundle-bar-cta {
+    display: inline-block;
+    padding: 14px 20px;
+    background: var(--mint);
+    color: var(--bg);
+    border: none;
+    border-radius: 12px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+  }
+  .bundle-bar-cta:hover { transform: translateY(-1px); }
+
+  .bundle-bar-analyze {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.08), rgba(160,216,255,0.06));
+    border: 1px solid rgba(168,230,207,0.15);
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+  .bundle-bar.visible .bundle-bar-analyze { display: flex; }
+  .bundle-bar-analyze:hover {
+    border-color: var(--mint);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+  .bundle-bar-analyze-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mint);
+  }
+  .bundle-bar-analyze-text {
+    flex: 1;
+    font-weight: 500;
+  }
+  .bundle-bar-analyze-arrow {
+    color: var(--mint);
+    font-weight: 600;
+  }
+
+  .waitlist-cta {
+    margin: 80px auto 0;
+    max-width: 600px;
+    text-align: center;
+    padding: 40px 32px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.06), rgba(200,182,255,0.06));
+    border: 1px solid var(--rule);
+  }
+  .waitlist-cta h3 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .waitlist-cta p { color: var(--ink-soft); font-size: 15px; margin-bottom: 24px; }
+  .waitlist-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .waitlist-cta a:hover { transform: translateY(-1px); }
+
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .logo { font-size: 20px; }
+    main { padding: 110px 20px 60px; }
+    .grid { grid-template-columns: 1fr; }
+    .card { padding: 32px 28px; }
+    .card h2 { font-size: 36px; }
+    .stack-builder { padding: 32px 24px; }
+    .goal-grid { grid-template-columns: repeat(2, 1fr); }
+    .rec-grid { grid-template-columns: 1fr; }
+    .discount-banner { flex-direction: column; text-align: center; padding: 20px; }
+  }
+
+  /* ============== VISUAL UPGRADE PACK ============== */
+  
+  /* Premium glass nav */
+  nav {
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    background: linear-gradient(180deg, rgba(14,11,20,0.85), rgba(14,11,20,0.4)) !important;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  nav::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(circle at 20% 50%, rgba(168,230,207,0.04), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(200,182,255,0.04), transparent 50%);
+  }
+  
+  /* Cursor glow follower (desktop only) */
+  .cursor-glow {
+    position: fixed; top: 0; left: 0; pointer-events: none;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(168,230,207,0.06), rgba(160,216,255,0.03) 40%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    will-change: transform;
+    mix-blend-mode: screen;
+    opacity: 0;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .cursor-glow.active { opacity: 1; }
+  }
+  @media (max-width: 700px) {
+    .cursor-glow { display: none; }
+  }
+  
+  /* Scroll reveal — elements fade up as they enter viewport */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Tactile button feedback — scale down on press */
+  button:not(:disabled):active,
+  a.cta-primary:active,
+  .cta-primary:active,
+  .product-card-add:active,
+  .bundle-bar-cta:active,
+  .goal-btn:active {
+    transform: scale(0.97);
+    transition: transform 0.08s ease !important;
+  }
+  
+  /* Subtle ambient inner glow on cards on hover */
+  .product-card,
+  .tier,
+  .principle,
+  .pillar,
+  .roadmap-card,
+  .chart-card {
+    box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
+    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  .product-card:hover,
+  .tier:hover,
+  .principle:hover,
+  .pillar:hover,
+  .roadmap-card:hover {
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 0 0 1px rgba(168,230,207,0.12),
+      0 24px 48px -12px rgba(0,0,0,0.5);
+  }
+  
+  /* Page transition — fade in on initial load */
+  @keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  main, body > section:first-of-type {
+    animation: pageFadeIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  
+  /* Reduced motion — respect user preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .cursor-glow { display: none; }
+  }
+  
+  /* View transitions API (Chromium browsers) */
+  @supports (view-transition-name: root) {
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.3s;
+      animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+  }
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://growbeaux.com/#organization",
+      "name": "Growbeaux",
+      "legalName": "Growbeaux LLC",
+      "url": "https://growbeaux.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://growbeaux.com/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "A $3/month men's health and weight loss program. Real protocols, supplements, and community — engineered for men.",
+      "foundingDate": "2026",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "MD",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@growbeaux.com",
+        "contactType": "Customer Support",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      },
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://growbeaux.com/#website",
+      "url": "https://growbeaux.com",
+      "name": "Growbeaux",
+      "description": "Lose the weight. Keep yourself.",
+      "publisher": {
+        "@id": "https://growbeaux.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://growbeaux.com/shop#webpage",
+      "url": "https://growbeaux.com/shop",
+      "name": "Shop — Growbeaux Supplements",
+      "isPartOf": { "@id": "https://growbeaux.com/#website" },
+      "description": "Fifteen launch SKUs across daily essentials, performance, recovery, and respiratory. Member pricing on every item.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://growbeaux.com" },
+          { "@type": "ListItem", "position": 2, "name": "Shop", "item": "https://growbeaux.com/shop" }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Growbeaux Supplements — Launch Catalog",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Daily Multi Gummy", "url": "https://growbeaux.com/shop#multiGummy" },
+        { "@type": "ListItem", "position": 2, "name": "Omega-3 Fish Oil", "url": "https://growbeaux.com/shop#omega" },
+        { "@type": "ListItem", "position": 3, "name": "Creatine Monohydrate", "url": "https://growbeaux.com/shop#creatine" },
+        { "@type": "ListItem", "position": 4, "name": "Creatine Gummies", "url": "https://growbeaux.com/shop#creatineGummies" },
+        { "@type": "ListItem", "position": 5, "name": "Collagen Peptides", "url": "https://growbeaux.com/shop#collagen" },
+        { "@type": "ListItem", "position": 6, "name": "Men's Daily Probiotic", "url": "https://growbeaux.com/shop#probiotic" },
+        { "@type": "ListItem", "position": 7, "name": "Grass-Fed Beef Liver", "url": "https://growbeaux.com/shop#beefLiver" },
+        { "@type": "ListItem", "position": 8, "name": "Whey Isolate Protein", "url": "https://growbeaux.com/shop#protein" },
+        { "@type": "ListItem", "position": 9, "name": "Daily Electrolytes", "url": "https://growbeaux.com/shop#electrolytes" },
+        { "@type": "ListItem", "position": 10, "name": "Sleep Formula", "url": "https://growbeaux.com/shop#sleep" },
+        { "@type": "ListItem", "position": 11, "name": "Ashwagandha KSM-66", "url": "https://growbeaux.com/shop#ashwagandha" },
+        { "@type": "ListItem", "position": 12, "name": "Daily Lung Support", "url": "https://growbeaux.com/shop#lungDaily" },
+        { "@type": "ListItem", "position": 13, "name": "Deep Lung Cleanse Complex", "url": "https://growbeaux.com/shop#lungCleanse" },
+        { "@type": "ListItem", "position": 14, "name": "Breathe Easy Drops", "url": "https://growbeaux.com/shop#breatheDrops" },
+        { "@type": "ListItem", "position": 15, "name": "Mullein Lung Tea", "url": "https://growbeaux.com/shop#lungTea" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Growbeaux</a>
+  <div class="menu-wrap">
+    <button class="menu-trigger" id="menu-trigger">
+      <span>Menu</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="dropdown" id="dropdown">
+      <a href="/"><span>Home</span><span class="arrow">→</span></a>
+      <a href="/shop"><span>Shop</span><span class="arrow">→</span></a>
+      <a href="/#how"><span>How it works</span><span class="arrow">→</span></a>
+      <a href="/about"><span>About</span><span class="arrow">→</span></a>
+      <a href="/#faq"><span>FAQ</span><span class="arrow">→</span></a>
+      <a href="/science"><span>Science</span><span class="arrow">→</span></a>
+      <a href="/contact"><span>Contact</span><span class="arrow">→</span></a>
+        <a href="https://whop.com/growbeaux-the-group" target="_blank" rel="noopener noreferrer" class="dropdown-cta"><span>The Group</span><span class="arrow">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="tag">The Shop</div>
+  <h1>Build your <span class="gradient">stack.</span></h1>
+  <p class="subhead">Clean supplements engineered for fat loss, lean mass, sleep, and recovery. All routed through your Growbeaux membership at member pricing.</p>
+
+  <div class="discount-banner" id="discount-banner">
+    <div class="discount-icon" id="discount-icon">25%</div>
+    <div class="discount-info">
+      <p id="discount-headline">Member discount applied</p>
+      <p><strong id="discount-code">CODE</strong> <span id="discount-detail">will auto-apply at checkout</span></p>
+    </div>
+  </div>
+
+  <section class="stack-builder">
+    <div class="stack-builder-header">
+      <h2>What's the <span class="accent">goal?</span></h2>
+      <p>Pick one. Or describe what you want in plain English.</p>
+    </div>
+
+    <div class="goal-grid">
+      <button class="goal-btn" data-goal="cut" aria-label="Cut Fat — Lose, Lean">
+        <span class="goal-btn-sr">Cut Fat — Lose · Lean</span>
+      </button>
+      <button class="goal-btn" data-goal="recomp" aria-label="Recomp — Burn plus Build">
+        <span class="goal-btn-sr">Recomp — Burn + Build</span>
+      </button>
+      <button class="goal-btn" data-goal="build" aria-label="Build Mass — Gain, Strong">
+        <span class="goal-btn-sr">Build Mass — Gain · Strong</span>
+      </button>
+      <button class="goal-btn" data-goal="reset" aria-label="Reset — Reboot, Heal">
+        <span class="goal-btn-sr">Reset — Reboot · Heal</span>
+      </button>
+    </div>
+
+    <div class="ai-stack-input-wrap">
+      <div class="ai-stack-label">Or describe it yourself</div>
+      <div class="ai-stack-input-row">
+        <input type="text" id="ai-stack-input" class="ai-stack-input" placeholder='Try: "I want to grow muscle and sleep better"' />
+        <button id="ai-stack-submit" class="ai-stack-submit" type="button">Build my stack →</button>
+      </div>
+      <div class="ai-stack-examples">
+        <span>Try:</span>
+        <button class="ai-stack-chip" data-prompt="I want to grow muscle">grow muscle</button>
+        <button class="ai-stack-chip" data-prompt="I want to sleep better">sleep better</button>
+        <button class="ai-stack-chip" data-prompt="I want more energy in the morning">more energy</button>
+        <button class="ai-stack-chip" data-prompt="I want to recover faster">recover faster</button>
+      </div>
+    </div>
+
+    <div class="recommendations" id="recommendations">
+      <div class="rec-section">
+        <div class="rec-section-header">
+          <h3 class="rec-section-h" id="stack-title">Your supplement stack</h3>
+          <p class="rec-section-sub" id="stack-desc">Built from your goal.</p>
+        </div>
+        <div class="rec-grid" id="supp-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-header">
+    <h2>Or shop the products</h2>
+    <p>Fifteen launch SKUs across four categories. Add anything to a custom monthly bundle.</p>
+  </div>
+
+  <!-- Preview imagery disclosure -->
+  <div class="preview-disclosure">
+    <span class="preview-disclosure-label">Heads up</span>
+    <span class="preview-disclosure-text">Packaging shown is preview imagery. Final product launches Q3 2026 — <a href="https://whop.com/growbeaux-the-group" target="_blank" rel="noopener noreferrer">join The Group</a> to be notified when it ships.</span>
+  </div>
+
+  <!-- ============== DAILY ESSENTIALS ============== -->
+  <div class="category-header">
+    <span class="category-tag">Daily essentials</span>
+    <h3>The everyday foundation</h3>
+    <p>What every man should take. Period.</p>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="multiGummy"></div>
+      <div class="product-card-body">
+        <div class="product-num">Daily</div>
+      <h3 class="product-name">Daily Multi Gummy</h3>
+      <p class="product-tagline">30+ vitamins and minerals — daily foundation</p>
+      <p class="product-desc">The one supplement to take if you only take one. B-complex, D3, K2, zinc. Mixed berry.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$24</span>
+          <span class="product-retail-price">$32</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $8/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="multiGummy" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="omega"></div>
+      <div class="product-card-body">
+        <div class="product-num">Daily</div>
+      <h3 class="product-name">Omega-3 Fish Oil</h3>
+      <p class="product-tagline">1,200mg EPA + DHA — heart, brain, joint</p>
+      <p class="product-desc">Triglyceride form, IFOS 5-star rated for purity. Wild-caught, no fishy aftertaste.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$27</span>
+          <span class="product-retail-price">$36</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $9/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="omega" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="creatine"></div>
+      <div class="product-card-body">
+        <div class="product-num">Daily</div>
+      <h3 class="product-name">Creatine Monohydrate</h3>
+      <p class="product-tagline">5g daily — strength, recovery, lean mass</p>
+      <p class="product-desc">The most-studied supplement on earth. Pure micronized creatine. Unflavored.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$18</span>
+          <span class="product-retail-price">$24</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $6/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="creatine" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="creatineGummies"></div>
+      <div class="product-card-body">
+        <div class="product-num">Daily</div>
+      <h3 class="product-name">Creatine Gummies</h3>
+      <p class="product-tagline">5g per serving — no shaker required</p>
+      <p class="product-desc">Same clinically-dosed creatine as the powder, in a daily gummy. Berry flavor.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$28</span>
+          <span class="product-retail-price">$38</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $10/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="creatineGummies" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="collagen"></div>
+      <div class="product-card-body">
+        <div class="product-num">Daily</div>
+      <h3 class="product-name">Collagen Peptides</h3>
+      <p class="product-tagline">Type I + III — joint, skin, hair, gut</p>
+      <p class="product-desc">Grass-fed bovine collagen peptides. 20g per scoop, hydrolyzed for absorption. Mixes clean into coffee or shakes.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$28</span>
+          <span class="product-retail-price">$38</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $10/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="collagen" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="probiotic"></div>
+      <div class="product-card-body">
+        <div class="product-num">Daily</div>
+      <h3 class="product-name">Men's Daily Probiotic</h3>
+      <p class="product-tagline">50 billion CFU — 12 strains, gut + immune</p>
+      <p class="product-desc">Shelf-stable, no refrigeration. Clinically-studied strains for men's gut health and digestive function.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$27</span>
+          <span class="product-retail-price">$36</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $9/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="probiotic" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="beefLiver"></div>
+      <div class="product-card-body">
+        <div class="product-num">Daily</div>
+      <h3 class="product-name">Grass-Fed Beef Liver</h3>
+      <p class="product-tagline">Desiccated organ — natural B12, iron, retinol</p>
+      <p class="product-desc">Grass-fed New Zealand beef liver. Freeze-dried to preserve natural vitamins and bioavailable iron. 6 capsules per serving.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$32</span>
+          <span class="product-retail-price">$42</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $10/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="beefLiver" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== PERFORMANCE ============== -->
+  <div class="category-header">
+    <span class="category-tag">Performance</span>
+    <h3>Train harder, recover better</h3>
+    <p>For the gym, the field, and everywhere in between.</p>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="protein"></div>
+      <div class="product-card-body">
+        <div class="product-num">Performance</div>
+      <h3 class="product-name">Whey Isolate Protein</h3>
+      <p class="product-tagline">25g per scoop — vanilla or unflavored</p>
+      <p class="product-desc">Cold-filtered whey isolate. No fillers, no artificial sweeteners, no proprietary blends.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$40</span>
+          <span class="product-retail-price">$54</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $14/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="protein" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="electrolytes"></div>
+      <div class="product-card-body">
+        <div class="product-num">Performance</div>
+      <h3 class="product-name">Daily Electrolytes</h3>
+      <p class="product-tagline">Sodium + potassium + magnesium</p>
+      <p class="product-desc">Real ratios, no added sugar, no artificial dyes. Mixes clean into water.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$21</span>
+          <span class="product-retail-price">$28</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $7/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="electrolytes" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== RECOVERY ============== -->
+  <div class="category-header">
+    <span class="category-tag">Recovery</span>
+    <h3>Sleep, stress, and bouncing back</h3>
+    <p>The most underrated levers in the protocol.</p>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="sleep"></div>
+      <div class="product-card-body">
+        <div class="product-num">Recovery</div>
+      <h3 class="product-name">Sleep Formula</h3>
+      <p class="product-tagline">Magnesium glycinate + glycine + L-theanine</p>
+      <p class="product-desc">No melatonin. No grogginess. The three ingredients with the most sleep research behind them.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$24</span>
+          <span class="product-retail-price">$32</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $8/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="sleep" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon" data-product="ashwagandha"></div>
+      <div class="product-card-body">
+        <div class="product-num">Recovery</div>
+      <h3 class="product-name">Ashwagandha (KSM-66)</h3>
+      <p class="product-tagline">600mg KSM-66 — stress, recovery, hormonal balance</p>
+      <p class="product-desc">The clinically-studied form, not generic ashwagandha. Standardized for actives.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$26</span>
+          <span class="product-retail-price">$34</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $8/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="ashwagandha" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== RESPIRATORY ============== -->
+  <div class="category-header respiratory-header">
+    <span class="category-tag">Respiratory</span>
+    <h3>The breathing line</h3>
+    <p>Built for men coming back from the smoke. Real ingredients, real doses, no claims we can't keep.</p>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card respiratory-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon respiratory-icon" data-product="lungDaily"></div>
+      <div class="product-card-body">
+        <div class="product-num">Respiratory</div>
+      <h3 class="product-name">Daily Lung Support</h3>
+      <p class="product-tagline">NAC + Quercetin + Vitamin C</p>
+      <p class="product-desc">Antioxidant support for men breathing modern air. NAC supports natural mucus clearance, quercetin supports respiratory comfort. For everyday prevention.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$24</span>
+          <span class="product-retail-price">$32</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $8/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="lungDaily" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card respiratory-card">
+      <div class="product-badge featured-badge">Featured</div>
+      <div class="product-icon respiratory-icon" data-product="lungCleanse"></div>
+      <div class="product-card-body">
+        <div class="product-num">Respiratory</div>
+      <h3 class="product-name">Deep Lung Cleanse Complex</h3>
+      <p class="product-tagline">15-in-1 — Mullein + NAC + Cordyceps + Reishi</p>
+      <p class="product-desc">A concentrated 60-day formula for men supporting their respiratory system after years of stress — environmental, occupational, or personal.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$36</span>
+          <span class="product-retail-price">$48</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $12/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="lungCleanse" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card respiratory-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon respiratory-icon" data-product="breatheDrops"></div>
+      <div class="product-card-body">
+        <div class="product-num">Respiratory</div>
+      <h3 class="product-name">Breathe Easy Drops</h3>
+      <p class="product-tagline">Mullein + marshmallow root tincture</p>
+      <p class="product-desc">Liquid herbal tincture absorbs faster than capsules. Three drops under the tongue, twice daily. 2 fl oz, ~60 days.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$21</span>
+          <span class="product-retail-price">$28</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $7/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="breatheDrops" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+
+    <div class="product-card respiratory-card">
+      <div class="product-badge">Coming soon</div>
+      <div class="product-icon respiratory-icon" data-product="lungTea"></div>
+      <div class="product-card-body">
+        <div class="product-num">Respiratory</div>
+      <h3 class="product-name">Mullein Lung Tea</h3>
+      <p class="product-tagline">Loose-leaf — mullein, marshmallow root, ginger</p>
+      <p class="product-desc">A nightly ritual for the men in respiratory recovery. Pure mullein leaf with marshmallow root, ginger, and licorice. 30 servings, caffeine-free.</p>
+      <div class="product-pricing">
+        <div class="product-price-row">
+          <span class="product-member-price">$16</span>
+          <span class="product-retail-price">$22</span>
+          <span class="product-period">/mo</span>
+        </div>
+        <span class="product-save">Save $6/mo as a member</span>
+      </div>
+        <button class="product-card-add" data-product-id="lungTea" type="button">+ Add to bundle</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="respiratory-disclaimer">
+    <p><strong>A note on respiratory products:</strong> These supplements are designed for general respiratory wellness. They are not intended to diagnose, treat, cure, or prevent any disease, and they are not a smoking-cessation aid. If you smoke, the most powerful step you can take for your lungs is quitting — talk to your doctor about evidence-based programs.</p>
+  </div>
+
+  <div class="waitlist-cta">
+    <h3>Store opens soon</h3>
+    <p>Join The Group on Whop for $3/mo and lock in founding member pricing.</p>
+    <a href="https://whop.com/growbeaux-the-group" target="_blank" rel="noopener noreferrer">Join The Group · $3/mo →</a>
+  </div>
+</main>
+
+<!-- ============== STICKY BUNDLE BAR ============== -->
+<div class="bundle-bar" id="bundle">
+  <button class="bundle-bar-close" id="bundle-close" type="button" aria-label="Close cart">✕</button>
+  <div class="bundle-bar-inner">
+    <div class="bundle-bar-header">
+      <div class="bundle-bar-title">
+        <span class="bundle-bar-label">Your monthly bundle</span>
+        <span class="bundle-bar-count"><span id="bundle-count">0</span> products</span>
+      </div>
+      <button class="bundle-bar-toggle" id="bundle-toggle" type="button">Show items</button>
+    </div>
+    <div class="bundle-bar-list" id="bundle-list"></div>
+    <a href="/science#analyzer" class="bundle-bar-analyze">
+      <span class="bundle-bar-analyze-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+      </span>
+      <span class="bundle-bar-analyze-text">Analyze my stack — see the science</span>
+      <span class="bundle-bar-analyze-arrow">→</span>
+    </a>
+    <div class="bundle-bar-footer">
+      <div class="bundle-bar-total">
+        <span class="bundle-bar-total-label">Total</span>
+        <span class="bundle-bar-total-amt" id="bundle-total">$0</span>
+        <span class="bundle-bar-total-savings" id="bundle-savings">Save $0/mo</span>
+      </div>
+      <a class="bundle-bar-cta" href="https://whop.com/growbeaux-the-group" target="_blank" rel="noopener noreferrer">Join The Group while you wait →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============== FLOATING CART BUTTON (when cart is collapsed) ============== -->
+<button class="cart-fab" id="cart-fab" type="button" aria-label="Open cart">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="21" r="1"/>
+    <circle cx="20" cy="21" r="1"/>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+  </svg>
+  <span class="cart-fab-badge" id="cart-fab-badge">0</span>
+</button>
+
+<script>
+  const trigger = document.getElementById("menu-trigger");
+  const dropdown = document.getElementById("dropdown");
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    trigger.classList.toggle("open");
+    dropdown.classList.toggle("open");
+  });
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target) && !trigger.contains(e.target)) {
+      trigger.classList.remove("open");
+      dropdown.classList.remove("open");
+    }
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  const discount = params.get("discount");
+  const codeMap = {
+    "25PUNK": { headline: "25% off supplements", percent: "25%", category: "on supplements" },
+  };
+
+  function showDiscount(code) {
+    const info = codeMap[code];
+    if (!info) return;
+    document.getElementById("discount-banner").classList.add("visible");
+    document.getElementById("discount-headline").textContent = info.headline;
+    document.getElementById("discount-code").textContent = code;
+    document.getElementById("discount-detail").textContent = "auto-applies at checkout " + info.category;
+    document.getElementById("discount-icon").textContent = info.percent;
+  }
+
+  if (discount && codeMap[discount.toUpperCase()]) {
+    showDiscount(discount.toUpperCase());
+    sessionStorage.setItem("growbeaux_discount", discount.toUpperCase());
+  } else if (sessionStorage.getItem("growbeaux_discount")) {
+    showDiscount(sessionStorage.getItem("growbeaux_discount"));
+  }
+
+  // ============== PRODUCT CATALOG ==============
+  // 4 launch SKUs. Each has price, member price, and which goals it serves.
+  const products = {
+    // ============== DAILY ==============
+    creatine: {
+      id: "creatine",
+      name: "Creatine Monohydrate",
+      tagline: "5g daily — strength, recovery, lean mass",
+      desc: "The most-studied supplement on earth. Pure micronized creatine monohydrate. Unflavored, mixes into anything.",
+      price: 24,
+      memberPrice: 18,
+      icon: "C",
+      category: "daily",
+      goals: ["recomp", "build", "cut"],
+      keywords: ["muscle", "strength", "lean", "growth", "build", "mass", "creatine", "lift", "lifting", "gym", "perform", "performance", "power"],
+    },
+    creatineGummies: {
+      id: "creatineGummies",
+      name: "Creatine Gummies",
+      tagline: "5g per serving — same creatine, no shaker required",
+      desc: "Same clinically-dosed creatine monohydrate as the powder, in a daily gummy. For men who'd rather chew than mix. Berry flavor.",
+      price: 38,
+      memberPrice: 28,
+      icon: "Cg",
+      category: "daily",
+      goals: ["recomp", "build", "cut"],
+      keywords: ["creatine", "gummy", "gummies", "easy", "convenient", "muscle", "strength", "travel", "no shaker", "berry"],
+    },
+    multiGummy: {
+      id: "multiGummy",
+      name: "Daily Multi Gummy",
+      tagline: "30+ vitamins and minerals — daily foundation",
+      desc: "The one supplement to take if you only take one. Whole-food vitamin and mineral complex with B-complex, D3, K2, and zinc. Mixed berry.",
+      price: 32,
+      memberPrice: 24,
+      icon: "M",
+      category: "daily",
+      goals: ["cut", "recomp", "build", "reset"],
+      keywords: ["multi", "multivitamin", "vitamin", "daily", "gummy", "gummies", "basic", "starter", "deficient", "energy", "tired", "immune", "zinc", "vitamin d"],
+    },
+    omega: {
+      id: "omega",
+      name: "Omega-3 Fish Oil",
+      tagline: "1,200mg EPA + DHA — heart, brain, joint",
+      desc: "Triglyceride form, IFOS 5-star rated for purity. Wild-caught, no fishy aftertaste, no rancidity. The most under-supplemented nutrient for men over 30.",
+      price: 36,
+      memberPrice: 27,
+      icon: "Ω",
+      category: "daily",
+      goals: ["cut", "recomp", "build", "reset"],
+      keywords: ["omega", "fish oil", "epa", "dha", "heart", "brain", "joint", "inflammation", "anti-inflammatory", "cardiovascular", "cognitive", "memory"],
+    },
+    collagen: {
+      id: "collagen",
+      name: "Collagen Peptides",
+      tagline: "Type I + III — joint, skin, hair, gut",
+      desc: "Grass-fed bovine collagen peptides. 20g per scoop, hydrolyzed for absorption. Mixes clean into coffee, shakes, or water. Unflavored.",
+      price: 38,
+      memberPrice: 28,
+      icon: "Co",
+      category: "daily",
+      goals: ["cut", "recomp", "build", "reset"],
+      keywords: ["collagen", "joint", "joints", "knees", "skin", "hair", "gut", "wrinkle", "tendon", "ligament", "recovery", "aging", "ancestral"],
+    },
+    probiotic: {
+      id: "probiotic",
+      name: "Men's Daily Probiotic",
+      tagline: "50 billion CFU — 12 strains, gut + immune",
+      desc: "Shelf-stable, no refrigeration. 12 clinically-studied strains chosen for men's gut health, immunity, and digestive function. One capsule daily.",
+      price: 36,
+      memberPrice: 27,
+      icon: "Pr",
+      category: "daily",
+      goals: ["cut", "recomp", "build", "reset"],
+      keywords: ["probiotic", "gut", "digestion", "stomach", "bloat", "bloating", "immune", "immunity", "bacteria", "flora", "digestive", "ibs", "cfu"],
+    },
+    beefLiver: {
+      id: "beefLiver",
+      name: "Grass-Fed Beef Liver",
+      tagline: "Desiccated organ — natural B12, iron, retinol",
+      desc: "Sourced from grass-fed, grass-finished cattle in New Zealand. Freeze-dried to preserve natural vitamins, minerals, and bioavailable iron. 6 capsules per serving.",
+      price: 42,
+      memberPrice: 32,
+      icon: "Bl",
+      category: "daily",
+      goals: ["cut", "recomp", "build", "reset"],
+      keywords: ["beef liver", "liver", "organ", "ancestral", "carnivore", "iron", "b12", "retinol", "vitamin a", "natural", "whole food", "grass fed", "energy", "bloodwork"],
+    },
+
+    // ============== PERFORMANCE ==============
+    electrolytes: {
+      id: "electrolytes",
+      name: "Daily Electrolytes",
+      tagline: "Sodium + potassium + magnesium — daily hydration",
+      desc: "Real ratios, no added sugar, no artificial dyes. The unflavored version mixes clean into water or your shake.",
+      price: 28,
+      memberPrice: 21,
+      icon: "E",
+      category: "performance",
+      goals: ["cut", "recomp", "build", "reset"],
+      keywords: ["energy", "hydrate", "hydration", "tired", "fatigue", "cramp", "salt", "electrolyte", "water", "morning", "wake", "headache", "sweat", "summer"],
+    },
+    protein: {
+      id: "protein",
+      name: "Whey Isolate Protein",
+      tagline: "25g protein per scoop — vanilla or unflavored",
+      desc: "Cold-filtered whey isolate. No fillers, no artificial sweeteners, no proprietary blends. Hits your protein target without the bloat.",
+      price: 54,
+      memberPrice: 40,
+      icon: "P",
+      category: "performance",
+      goals: ["cut", "recomp", "build"],
+      keywords: ["protein", "muscle", "lean", "build", "grow", "growth", "shake", "meal", "diet", "nutrition", "whey", "isolate"],
+    },
+
+    // ============== RECOVERY & WELLNESS ==============
+    sleep: {
+      id: "sleep",
+      name: "Sleep Formula",
+      tagline: "Magnesium glycinate + glycine + L-theanine",
+      desc: "No melatonin. No grogginess. Real dosages of the three ingredients with the most sleep research behind them.",
+      price: 32,
+      memberPrice: 24,
+      icon: "S",
+      category: "recovery",
+      goals: ["cut", "recomp", "reset"],
+      keywords: ["sleep", "rest", "tired", "insomnia", "recovery", "calm", "stress", "anxiety", "wind down", "fall asleep", "night", "magnesium", "glycine"],
+    },
+    ashwagandha: {
+      id: "ashwagandha",
+      name: "Ashwagandha (KSM-66)",
+      tagline: "600mg KSM-66 — stress, recovery, hormonal balance",
+      desc: "The clinically-studied form, not generic ashwagandha. Standardized for actives. Helps men manage stress, sleep deeper, and recover harder.",
+      price: 34,
+      memberPrice: 26,
+      icon: "A",
+      category: "recovery",
+      goals: ["cut", "recomp", "build", "reset"],
+      keywords: ["stress", "anxiety", "cortisol", "recovery", "calm", "ashwagandha", "adaptogen", "ksm-66", "hormone", "testosterone", "sleep"],
+    },
+
+    // ============== RESPIRATORY LINE (the differentiator) ==============
+    lungDaily: {
+      id: "lungDaily",
+      name: "Daily Lung Support",
+      tagline: "NAC + Quercetin + Vitamin C — daily respiratory care",
+      desc: "Antioxidant support for men breathing modern air. NAC supports natural mucus clearance, quercetin supports respiratory comfort. For everyday prevention, not crisis response.",
+      price: 32,
+      memberPrice: 24,
+      icon: "L",
+      category: "respiratory",
+      goals: ["cut", "recomp", "reset"],
+      keywords: ["lung", "lungs", "breath", "breathing", "respiratory", "nac", "quercetin", "antioxidant", "air", "pollution", "daily", "support", "smoker", "smoking", "former smoker", "ex smoker", "vape", "vaping"],
+    },
+    lungCleanse: {
+      id: "lungCleanse",
+      name: "Deep Lung Cleanse Complex",
+      tagline: "15-in-1 — Mullein + NAC + Cordyceps + Reishi",
+      desc: "A concentrated 60-day formula for men supporting their respiratory system after years of stress — environmental, occupational, or personal. Mullein, NAC, quercetin, cordyceps, reishi, marshmallow root, oregano. Real doses.",
+      price: 48,
+      memberPrice: 36,
+      icon: "Lc",
+      category: "respiratory",
+      goals: ["reset"],
+      keywords: ["lung", "lungs", "cleanse", "detox", "smoker", "smoking", "former smoker", "ex smoker", "quit", "quitting", "breath", "breathing", "respiratory", "mullein", "nac", "cordyceps", "reishi", "mucus", "phlegm", "congestion", "60-day", "reset", "vape", "vaping", "tar"],
+    },
+    breatheDrops: {
+      id: "breatheDrops",
+      name: "Breathe Easy Drops",
+      tagline: "Mullein + marshmallow root tincture — fast-acting liquid",
+      desc: "Liquid herbal tincture absorbs faster than capsules. For men who want respiratory support that kicks in same-day. Three drops under the tongue, twice daily. 2 fl oz, ~60 days.",
+      price: 28,
+      memberPrice: 21,
+      icon: "Bd",
+      category: "respiratory",
+      goals: ["reset"],
+      keywords: ["lung", "lungs", "breath", "breathing", "respiratory", "mullein", "drops", "tincture", "liquid", "fast", "smoker", "smoking", "vape", "vaping", "mucus", "cough", "tightness", "chest"],
+    },
+    lungTea: {
+      id: "lungTea",
+      name: "Mullein Lung Tea",
+      tagline: "Loose-leaf herbal — mullein, marshmallow root, ginger",
+      desc: "A nightly ritual for the men in respiratory recovery. Pure mullein leaf with marshmallow root, ginger, and licorice. 30 servings, naturally caffeine-free.",
+      price: 22,
+      memberPrice: 16,
+      icon: "Lt",
+      category: "respiratory",
+      goals: ["reset"],
+      keywords: ["lung", "lungs", "tea", "mullein", "herbal", "loose leaf", "ritual", "evening", "wind down", "marshmallow", "ginger", "respiratory", "breath", "breathing", "smoker", "smoking", "caffeine free"],
+    },
+  };
+
+  // ============== GOAL → STACK MAPPING ==============
+  // Maps each Cut/Recomp/Build/Reset to specific product IDs
+  const stacks = {
+    cut: {
+      title: "The Cut Stack",
+      desc: "For fat loss with lean mass preservation.",
+      products: ["protein", "creatine", "sleep", "multiGummy"],
+    },
+    recomp: {
+      title: "The Recomp Stack",
+      desc: "Burn fat and build muscle simultaneously.",
+      products: ["protein", "creatine", "electrolytes", "ashwagandha"],
+    },
+    build: {
+      title: "The Build Stack",
+      desc: "Maximum muscle gain, minimum bullshit.",
+      products: ["protein", "creatine", "electrolytes", "omega"],
+    },
+    reset: {
+      title: "The Reset Stack",
+      desc: "Respiratory recovery and a clean slate. Built for men starting over.",
+      products: ["lungCleanse", "lungDaily", "sleep", "multiGummy"],
+    },
+  };
+
+  // ============== AI STACK BUILDER ==============
+  // Smart keyword matching — interprets free-text input
+  function aiStackBuilder(input) {
+    const text = input.toLowerCase();
+    const stop = new Set(['i','want','to','need','help','me','get','my','the','a','an','for','more','some','feel','feeling','am','be','being']);
+    const terms = text.replace(/[^\w\s'-]/g, ' ').split(/\s+/).filter(t => t.length > 1 && !stop.has(t));
+
+    if (terms.length === 0) return null;
+
+    // Score each product by keyword match
+    const scored = Object.values(products).map(p => {
+      let score = 0;
+      const haystack = (p.name + ' ' + p.tagline + ' ' + p.desc + ' ' + p.keywords.join(' ')).toLowerCase();
+      for (const term of terms) {
+        if (p.keywords.some(k => k.includes(term) || term.includes(k))) score += 5;
+        if (haystack.includes(term)) score += 1;
+      }
+      return { product: p, score };
+    }).filter(r => r.score > 0).sort((a, b) => b.score - a.score);
+
+    if (scored.length === 0) return null;
+
+    // Return top 3 matches
+    return scored.slice(0, 3).map(r => r.product.id);
+  }
+
+  // ============== RENDER STACK ==============
+  function renderStack(productIds, customTitle, customDesc) {
+    const recsEl = document.getElementById("recommendations");
+    const suppGrid = document.getElementById("supp-grid");
+    const titleEl = document.getElementById("stack-title");
+    const descEl = document.getElementById("stack-desc");
+
+    if (customTitle) titleEl.textContent = customTitle;
+    if (customDesc) descEl.textContent = customDesc;
+
+    suppGrid.innerHTML = productIds.map(id => {
+      const p = products[id];
+      return `
+        <div class="rec-item" data-product-id="${p.id}">
+          <div class="rec-item-icon">${p.icon}</div>
+          <div class="rec-item-info">
+            <div class="rec-item-name">${p.name}</div>
+            <div class="rec-item-desc">${p.tagline}</div>
+            <div class="rec-item-pricing">
+              <span class="rec-item-member">$${p.memberPrice}/mo</span>
+              <span class="rec-item-retail">$${p.price}</span>
+              <span class="rec-item-save">SAVE $${p.price - p.memberPrice}</span>
+            </div>
+          </div>
+          <button class="rec-item-add" data-product-id="${p.id}" type="button">+ Add</button>
+        </div>
+      `;
+    }).join("");
+
+    // Wire up "Add" buttons
+    document.querySelectorAll(".rec-item-add").forEach(btn => {
+      btn.addEventListener("click", () => addToBundle(btn.dataset.productId));
+    });
+
+    recsEl.classList.add("visible");
+    recsEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  // ============== GOAL BUTTONS ==============
+  const goalBtns = document.querySelectorAll(".goal-btn");
+  goalBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      goalBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const goal = btn.dataset.goal;
+      const stack = stacks[goal];
+      renderStack(stack.products, stack.title, stack.desc);
+      // Auto-add to bundle
+      bundle = [...stack.products];
+      renderBundle();
+    });
+  });
+
+  // ============== AI INPUT FIELD ==============
+  const aiInput = document.getElementById("ai-stack-input");
+  const aiSubmit = document.getElementById("ai-stack-submit");
+
+  function handleAiSubmit() {
+    const text = aiInput.value.trim();
+    if (!text) return;
+    const ids = aiStackBuilder(text);
+    if (!ids) {
+      renderStack(["protein", "creatine", "sleep"], "Recommended starter stack", "We couldn't match exactly, so here's the most popular foundation.");
+    } else {
+      renderStack(ids, "Your custom stack", `Built around: "${text}"`);
+    }
+    bundle = ids || ["protein", "creatine", "sleep"];
+    renderBundle();
+    aiInput.value = "";
+  }
+
+  if (aiSubmit) aiSubmit.addEventListener("click", handleAiSubmit);
+  if (aiInput) aiInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleAiSubmit();
+  });
+
+  // Wire up the AI example chips
+  document.querySelectorAll(".ai-stack-chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      aiInput.value = chip.dataset.prompt;
+      handleAiSubmit();
+    });
+  });
+
+  // Wire up bundle toggle (mobile collapse)
+  const bundleToggle = document.getElementById("bundle-toggle");
+  const bundleListEl = document.getElementById("bundle-list");
+  if (bundleToggle) {
+    bundleToggle.addEventListener("click", () => {
+      const isOpen = bundleListEl.classList.toggle("expanded");
+      bundleToggle.textContent = isOpen ? "Hide items" : "Show items";
+    });
+  }
+
+  // ============== BUNDLE STATE (persisted across pages via localStorage) ==============
+  const BUNDLE_KEY = "growbeaux_bundle";
+  const BUNDLE_OPEN_KEY = "growbeaux_bundle_open";
+
+  function loadBundle() {
+    try {
+      const raw = localStorage.getItem(BUNDLE_KEY);
+      if (!raw) return [];
+      const arr = JSON.parse(raw);
+      // Only keep IDs that still exist as products
+      return Array.isArray(arr) ? arr.filter(id => products[id]) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveBundle() {
+    try {
+      localStorage.setItem(BUNDLE_KEY, JSON.stringify(bundle));
+    } catch (e) { /* noop */ }
+  }
+
+  let bundle = loadBundle();
+  // Default: bar is open if there are items, but user can collapse
+  let bundleBarOpen = bundle.length > 0 && localStorage.getItem(BUNDLE_OPEN_KEY) !== "false";
+
+  function addToBundle(productId) {
+    if (!bundle.includes(productId)) {
+      bundle.push(productId);
+      saveBundle();
+      bundleBarOpen = true;
+      localStorage.setItem(BUNDLE_OPEN_KEY, "true");
+      renderBundle();
+    }
+  }
+
+  function removeFromBundle(productId) {
+    bundle = bundle.filter(id => id !== productId);
+    saveBundle();
+    renderBundle();
+  }
+
+  function closeBundleBar() {
+    bundleBarOpen = false;
+    localStorage.setItem(BUNDLE_OPEN_KEY, "false");
+    renderBundle();
+  }
+
+  function openBundleBar() {
+    bundleBarOpen = true;
+    localStorage.setItem(BUNDLE_OPEN_KEY, "true");
+    renderBundle();
+  }
+
+  function renderBundle() {
+    const bundleEl = document.getElementById("bundle");
+    const bundleListEl = document.getElementById("bundle-list");
+    const bundleTotalEl = document.getElementById("bundle-total");
+    const bundleSavingsEl = document.getElementById("bundle-savings");
+    const bundleCountEl = document.getElementById("bundle-count");
+    const cartFab = document.getElementById("cart-fab");
+    const cartFabBadge = document.getElementById("cart-fab-badge");
+
+    // Update FAB count + visibility
+    if (cartFabBadge) {
+      cartFabBadge.textContent = bundle.length;
+      cartFabBadge.setAttribute("data-count", bundle.length);
+    }
+    if (cartFab) {
+      // Show FAB if bar is closed AND has items
+      if (bundle.length > 0 && !bundleBarOpen) {
+        cartFab.classList.add("visible");
+      } else {
+        cartFab.classList.remove("visible");
+      }
+    }
+
+    if (!bundleEl) return;
+
+    // Hide bar if empty OR collapsed
+    if (bundle.length === 0 || !bundleBarOpen) {
+      bundleEl.classList.remove("visible");
+      return;
+    }
+
+    bundleEl.classList.add("visible");
+    bundleCountEl.textContent = bundle.length;
+
+    bundleListEl.innerHTML = bundle.map(id => {
+      const p = products[id];
+      return `
+        <div class="bundle-item">
+          <div class="bundle-item-info">
+            <span class="bundle-item-icon">${p.icon}</span>
+            <div>
+              <div class="bundle-item-name">${p.name}</div>
+              <div class="bundle-item-price">$${p.memberPrice}/mo</div>
+            </div>
+          </div>
+          <button class="bundle-item-remove" data-product-id="${p.id}" type="button">✕</button>
+        </div>
+      `;
+    }).join("");
+
+    document.querySelectorAll(".bundle-item-remove").forEach(btn => {
+      btn.addEventListener("click", () => removeFromBundle(btn.dataset.productId));
+    });
+
+    const memberTotal = bundle.reduce((sum, id) => sum + products[id].memberPrice, 0);
+    const retailTotal = bundle.reduce((sum, id) => sum + products[id].price, 0);
+    bundleTotalEl.textContent = "$" + memberTotal;
+    bundleSavingsEl.textContent = "Save $" + (retailTotal - memberTotal) + "/mo";
+  }
+
+  // Wire close button
+  const bundleClose = document.getElementById("bundle-close");
+  if (bundleClose) bundleClose.addEventListener("click", closeBundleBar);
+
+  // Wire FAB to reopen bundle bar
+  const cartFabEl = document.getElementById("cart-fab");
+  if (cartFabEl) cartFabEl.addEventListener("click", openBundleBar);
+
+  // Initial render — show bar with persisted bundle if applicable
+  renderBundle();
+
+  // ============== INDIVIDUAL PRODUCT "ADD" BUTTONS ==============
+  document.querySelectorAll(".product-card-add").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      addToBundle(btn.dataset.productId);
+    });
+  });
+</script>
+
+<!-- AI ASSISTANT CHATBOT -->
+<style>
+  .gb-chat-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #a8e6cf, #a0d8ff);
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(168,230,207,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s cubic-bezier(0.2,0.9,0.3,1);
+    animation: chatPulse 3s ease-in-out infinite;
+  }
+  .gb-chat-toggle:hover { transform: scale(1.08); }
+  .gb-chat-toggle.active { animation: none; }
+  @keyframes chatPulse {
+    0%, 100% { box-shadow: 0 8px 32px rgba(168,230,207,0.35); }
+    50% { box-shadow: 0 8px 32px rgba(168,230,207,0.6), 0 0 0 12px rgba(168,230,207,0.08); }
+  }
+  .gb-chat-toggle svg { width: 26px; height: 26px; color: #0e0b14; }
+  .gb-chat-toggle .gb-close-icon { display: none; }
+  .gb-chat-toggle.active .gb-open-icon { display: none; }
+  .gb-chat-toggle.active .gb-close-icon { display: block; }
+
+  .gb-chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    z-index: 9998;
+    width: 380px;
+    max-width: calc(100vw - 48px);
+    height: 560px;
+    max-height: calc(100vh - 140px);
+    background: #17131f;
+    border: 1px solid rgba(245,240,245,0.18);
+    border-radius: 24px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px) scale(0.98);
+    transition: all 0.25s cubic-bezier(0.2,0.9,0.3,1);
+  }
+  .gb-chat-window.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .gb-chat-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(245,240,245,0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.06), rgba(200,182,255,0.06));
+  }
+  .gb-chat-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a8e6cf, #c8b6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Geist', sans-serif;
+    font-weight: 800;
+    color: #0e0b14;
+    font-size: 14px;
+  }
+  .gb-chat-header-info h4 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #f5f0f5;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .gb-chat-header-info p {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    color: #a8e6cf;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 2px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .gb-chat-header-info p::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a8e6cf;
+    box-shadow: 0 0 8px #a8e6cf;
+  }
+
+  .gb-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .gb-chat-messages::-webkit-scrollbar { width: 4px; }
+  .gb-chat-messages::-webkit-scrollbar-thumb { background: rgba(245,240,245,0.1); border-radius: 4px; }
+
+  .gb-msg {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: msgIn 0.3s cubic-bezier(0.2,0.9,0.3,1);
+  }
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .gb-msg.bot {
+    background: rgba(168,230,207,0.08);
+    color: #f5f0f5;
+    border: 1px solid rgba(168,230,207,0.15);
+    border-bottom-left-radius: 6px;
+    align-self: flex-start;
+  }
+  .gb-msg.user {
+    background: linear-gradient(135deg, #a8e6cf, #a0d8ff);
+    color: #0e0b14;
+    border-bottom-right-radius: 6px;
+    align-self: flex-end;
+    font-weight: 500;
+  }
+  .gb-msg a { color: #a8e6cf; text-decoration: underline; }
+
+  .gb-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .gb-chip {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(245,240,245,0.04);
+    border: 1px solid rgba(245,240,245,0.1);
+    color: #b8adc4;
+    font-family: 'Geist', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .gb-chip:hover {
+    border-color: #a8e6cf;
+    color: #a8e6cf;
+    background: rgba(168,230,207,0.06);
+  }
+
+  .gb-chat-input {
+    padding: 14px 16px;
+    border-top: 1px solid rgba(245,240,245,0.08);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #17131f;
+  }
+  .gb-chat-input input {
+    flex: 1;
+    padding: 10px 14px;
+    background: #0e0b14;
+    border: 1px solid rgba(245,240,245,0.1);
+    border-radius: 999px;
+    color: #f5f0f5;
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .gb-chat-input input:focus { border-color: #a8e6cf; }
+  .gb-chat-input input::placeholder { color: #6a5f7a; }
+  .gb-chat-input button {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #a8e6cf, #a0d8ff);
+    color: #0e0b14;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s;
+    flex-shrink: 0;
+  }
+  .gb-chat-input button:hover { transform: scale(1.05); }
+  .gb-chat-input button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .gb-chat-footer {
+    padding: 8px 16px;
+    text-align: center;
+    border-top: 1px solid rgba(245,240,245,0.05);
+    background: #17131f;
+  }
+  .gb-chat-footer p {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    color: #6a5f7a;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  @media (max-width: 500px) {
+    .gb-chat-window {
+      bottom: 90px;
+      right: 12px;
+      left: 12px;
+      width: auto;
+      height: 70vh;
+    }
+    .gb-chat-toggle { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+  }
+
+  .gb-chat-header { position: relative; }
+  .gb-chat-close {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245,240,245,0.06);
+    border: 1px solid rgba(245,240,245,0.1);
+    border-radius: 999px;
+    color: #b8aabe;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .gb-chat-close:hover {
+    background: rgba(245,240,245,0.12);
+    color: #f5f0f5;
+  }
+</style>
+
+<button class="gb-chat-toggle" id="gb-chat-toggle" aria-label="Open chat">
+  <svg class="gb-open-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <svg class="gb-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 6L6 18M6 6l12 12"/>
+  </svg>
+</button>
+
+<div class="gb-chat-window" id="gb-chat-window">
+  <div class="gb-chat-header">
+    <div class="gb-chat-avatar">G</div>
+    <div class="gb-chat-header-info">
+      <h4>Growbeaux Assistant</h4>
+    </div>
+    <button class="gb-chat-close" id="gb-chat-close" type="button" aria-label="Close chat">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="gb-chat-messages" id="gb-chat-messages"></div>
+
+  <div class="gb-chat-input">
+    <input type="text" id="gb-chat-input" placeholder="Ask anything about Growbeaux..." autocomplete="off">
+    <button id="gb-chat-send" aria-label="Send">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="gb-chat-footer">
+    <p>Powered by Growbeaux · Real humans on standby</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  const toggle = document.getElementById('gb-chat-toggle');
+  const win = document.getElementById('gb-chat-window');
+  const msgs = document.getElementById('gb-chat-messages');
+  const input = document.getElementById('gb-chat-input');
+  const send = document.getElementById('gb-chat-send');
+
+  // -------- SITE CONTENT INDEX --------
+  // This is the indexed content from across all Growbeaux pages.
+  // The assistant searches this every time the user asks something.
+  const siteIndex = [
+    // HOMEPAGE — hero & program
+    { page: '/', title: 'The program', section: 'Hero',
+      keywords: ['program', 'system', 'what is', 'overview', 'about'],
+      content: "Growbeaux is a $3/month weight loss and men's health system. The program includes daily check-ins, weekly protocol drops, the tracker app, and a private community. Supplements are sold separately — only if you want them." },
+
+    // PRICING
+    { page: '/', title: 'Pricing — $3/month', section: 'The stack',
+      keywords: ['price', 'cost', 'how much', '$3', 'pricing', 'fee', 'subscription', 'pay', 'monthly', 'cheap', 'expensive'],
+      content: "The Foundation tier is $3/month — the program, dashboard, and community forever. No trial trap. No upsell wall. Founding members lock in $3/mo for life." },
+
+    { page: '/', title: 'Founding member pricing', section: 'Hero',
+      keywords: ['founding', 'lock', 'forever', 'first 500', 'early', 'waitlist', 'reserve'],
+      content: "First 500 members lock in $3/mo for life — even when prices rise later. Drop your email below the hero or final CTA to lock in." },
+
+    // SUPPLEMENTS — overview
+    { page: '/shop', title: 'Supplements', section: 'The Shop',
+      keywords: ['supplement', 'stack', 'fuel', 'powder', 'pill', 'product', 'products'],
+      content: "Fifteen products across four categories: Daily Essentials (multi gummy, omega-3, creatine, creatine gummies, collagen, probiotic, beef liver), Performance (whey protein, electrolytes), Recovery (sleep formula, ashwagandha), and Respiratory (daily lung support, deep lung cleanse, breathe easy drops, mullein lung tea). Member pricing built in. Build a custom monthly bundle at /shop." },
+
+    // INDIVIDUAL PRODUCTS — daily
+    { page: '/shop', title: 'Daily Multi Gummy', section: 'Daily',
+      keywords: ['multi', 'multivitamin', 'vitamin', 'gummy', 'gummies', 'daily', 'starter', 'basic', 'vitamin d', 'b complex'],
+      content: "$24/month for members ($32 retail). 30+ vitamins and minerals in a daily gummy — B-complex, D3, K2, zinc. Mixed berry. The one supplement to take if you only take one." },
+
+    { page: '/shop', title: 'Omega-3 Fish Oil', section: 'Daily',
+      keywords: ['omega', 'fish oil', 'epa', 'dha', 'heart', 'brain', 'joint', 'inflammation'],
+      content: "$27/month for members ($36 retail). 1,200mg EPA + DHA, IFOS 5-star rated, triglyceride form. The most under-supplemented nutrient for men over 30." },
+
+    { page: '/shop', title: 'Creatine Monohydrate', section: 'Daily',
+      keywords: ['creatine', 'monohydrate', 'strength', 'lean', 'muscle', 'powder'],
+      content: "$18/month for members ($24 retail). 5g micronized creatine monohydrate, unflavored, mixes into anything. The most-studied supplement on earth." },
+
+    { page: '/shop', title: 'Creatine Gummies', section: 'Daily',
+      keywords: ['creatine', 'gummy', 'gummies', 'easy', 'travel', 'no shaker'],
+      content: "$28/month for members ($38 retail). Same 5g clinical dose as the powder, in a daily gummy. Berry flavor. For men who'd rather chew than mix." },
+
+    { page: '/shop', title: 'Collagen Peptides', section: 'Daily',
+      keywords: ['collagen', 'peptides', 'joint', 'joints', 'skin', 'hair', 'gut', 'tendon', 'aging'],
+      content: "$28/month for members ($38 retail). Grass-fed bovine Type I + III collagen, 20g per scoop, hydrolyzed. Mixes clean into coffee, shakes, or water. Unflavored." },
+
+    { page: '/shop', title: 'Mens Daily Probiotic', section: 'Daily',
+      keywords: ['probiotic', 'gut', 'digestion', 'immune', 'bloat', 'cfu', 'bacteria', 'flora'],
+      content: "$27/month for members ($36 retail). 50 billion CFU, 12 strains chosen for men's gut health and immunity. Shelf-stable, no refrigeration." },
+
+    { page: '/shop', title: 'Grass-Fed Beef Liver', section: 'Daily',
+      keywords: ['beef liver', 'liver', 'organ', 'ancestral', 'iron', 'b12', 'retinol', 'whole food', 'carnivore'],
+      content: "$32/month for members ($42 retail). Grass-fed New Zealand beef liver, freeze-dried to preserve nutrients. Natural B12, iron, retinol. 6 capsules per serving." },
+
+    // PERFORMANCE
+    { page: '/shop', title: 'Whey Isolate Protein', section: 'Performance',
+      keywords: ['protein', 'whey', 'isolate', 'shake', 'muscle', 'lean'],
+      content: "$40/month for members ($54 retail). 25g cold-filtered whey isolate per scoop, vanilla or unflavored. No fillers, sweeteners, or proprietary blends." },
+
+    { page: '/shop', title: 'Daily Electrolytes', section: 'Performance',
+      keywords: ['electrolyte', 'hydration', 'sodium', 'potassium', 'magnesium', 'cramp', 'energy', 'water'],
+      content: "$21/month for members ($28 retail). Real ratios of sodium, potassium, magnesium. No added sugar or artificial dyes. Unflavored mixes clean into anything." },
+
+    // RECOVERY
+    { page: '/shop', title: 'Sleep Formula', section: 'Recovery',
+      keywords: ['sleep', 'rest', 'insomnia', 'magnesium', 'glycine', 'theanine', 'melatonin', 'wind down'],
+      content: "$24/month for members ($32 retail). Magnesium glycinate + glycine + L-theanine — the three ingredients with the most sleep research behind them. No melatonin, no grogginess." },
+
+    { page: '/shop', title: 'Ashwagandha KSM-66', section: 'Recovery',
+      keywords: ['ashwagandha', 'ksm-66', 'stress', 'cortisol', 'anxiety', 'adaptogen', 'recovery'],
+      content: "$26/month for members ($34 retail). 600mg KSM-66 — the clinically-studied form, standardized for actives. Helps men manage stress, sleep deeper, recover harder." },
+
+    // RESPIRATORY LINE
+    { page: '/shop', title: 'Daily Lung Support', section: 'Respiratory',
+      keywords: ['lung', 'lungs', 'breath', 'breathing', 'respiratory', 'nac', 'quercetin', 'air quality', 'pollution', 'former smoker', 'ex smoker', 'vape'],
+      content: "$24/month for members ($32 retail). NAC + Quercetin + Vitamin C. Antioxidant support for men breathing modern air. NAC supports natural mucus clearance. For everyday prevention, not crisis response." },
+
+    { page: '/shop', title: 'Deep Lung Cleanse Complex', section: 'Respiratory',
+      keywords: ['lung cleanse', 'mullein', 'cordyceps', 'reishi', '15-in-1', '60 day', 'reset', 'former smoker', 'quit smoking', 'ex smoker', 'tar', 'detox'],
+      content: "$36/month for members ($48 retail). 15-in-1 concentrated formula: Mullein, NAC, Quercetin, Cordyceps, Reishi, Marshmallow Root, Oregano, Bromelain. A 60-day reset for men supporting their respiratory system after years of stress — environmental, occupational, or personal." },
+
+    { page: '/shop', title: 'Breathe Easy Drops', section: 'Respiratory',
+      keywords: ['drops', 'tincture', 'liquid', 'mullein drops', 'fast acting', 'respiratory tincture'],
+      content: "$21/month for members ($28 retail). Liquid mullein + marshmallow root tincture. Absorbs faster than capsules. Three drops under the tongue, twice daily. 2 fl oz, ~60 days." },
+
+    { page: '/shop', title: 'Mullein Lung Tea', section: 'Respiratory',
+      keywords: ['tea', 'mullein tea', 'herbal tea', 'evening', 'ritual', 'caffeine free', 'wind down', 'nightly'],
+      content: "$16/month for members ($22 retail). Loose-leaf herbal: pure mullein leaf, marshmallow root, ginger, licorice. 30 servings, naturally caffeine-free. A nightly ritual for the men in respiratory recovery." },
+
+    // RESPIRATORY DISCLAIMER
+    { page: '/shop', title: 'About the respiratory line', section: 'Disclaimer',
+      keywords: ['quit smoking', 'smoking cessation', 'cure', 'treat', 'cigarette', 'vape', 'nicotine'],
+      content: "The respiratory products are designed for general respiratory wellness — not smoking cessation. They aren't a substitute for quitting. If you're trying to quit smoking, the most powerful thing you can do is talk to your doctor about evidence-based programs (Chantix, nicotine replacement, behavioral support)." },
+
+    // BUNDLES
+    { page: '/shop', title: 'Building a monthly bundle', section: 'Stack builder',
+      keywords: ['bundle', 'subscription', 'monthly', 'subscribe', 'recurring', 'multiple products'],
+      content: "Add any combination of products to a monthly bundle. Member pricing applies to every item. Subscribe monthly to lock in savings, or buy individually. Cancel any time." },
+
+    { page: '/shop', title: 'AI stack builder', section: 'Stack builder',
+      keywords: ['ai', 'stack builder', 'recommend', 'recommendation', 'custom', 'personalized', 'what should i take'],
+      content: "Type what you want in plain English ('I want to grow muscle' or 'I want to sleep better') and the stack builder picks matching products. Or click a goal — Cut, Recomp, Build, Reset — for a pre-built stack." },
+
+    // INGREDIENTS / QUALITY
+    { page: '/', title: 'Ingredient quality', section: 'FAQ',
+      keywords: ['ingredient', 'quality', 'tested', 'third-party', 'clean', 'fillers', 'proprietary', 'label'],
+      content: "Clean ingredients, third-party tested. We list every ingredient and dosage on the label — no proprietary blends, no fillers, no marketing fluff." },
+
+    // HOW IT WORKS
+    { page: '/#how', title: 'How it works — 4 steps', section: 'The system',
+      keywords: ['how it works', 'how does', 'process', 'steps', 'flow', 'start', 'begin', 'sign up', 'getting started', 'onboarding'],
+      content: "Four steps: 1) Join — $3 gets the full program. 2) Assess — 5-min intake builds your protocol. 3) Stack — add supplements at member pricing if you want. 4) Execute — daily check-ins, weekly weigh-ins, monthly review." },
+
+    // SCIENCE
+    { page: '/science', title: 'Protein preserves muscle', section: 'Pillar 01',
+      keywords: ['protein', 'muscle', 'lean mass', 'preserve', 'cut', 'cutting'],
+      content: "Men cutting calories without enough protein lose roughly equal parts fat and lean muscle. With 0.8–1.0 g/lb of bodyweight in protein per day, men retain muscle while losing fat. Sources: Helms 2014, Longland 2016, Murphy 2018." },
+
+    { page: '/science', title: 'Resistance training beats cardio', section: 'Pillar 02',
+      keywords: ['training', 'exercise', 'workout', 'lifting', 'cardio', 'strength', 'gym', 'resistance'],
+      content: "For fat loss and aesthetic goals, 2–4 strength sessions per week outperform cardio-heavy programs. You burn fewer calories during the workout but more across the day, and keep the muscle that gives shape to a leaner body. Sources: Willis 2012, Schoenfeld 2017." },
+
+    { page: '/science', title: 'Sleep is the most underrated weight loss tool', section: 'Pillar 03',
+      keywords: ['sleep science', 'sleep research', 'leptin', 'ghrelin', 'hormone'],
+      content: "Men sleeping under 6 hours regulate appetite hormones (leptin, ghrelin) so poorly that they lose nearly twice as much muscle on the same diet. Sleep gets a daily check-in slot for a reason. Sources: Nedeltcheva 2010, Spiegel 2004." },
+
+    { page: '/science', title: 'Recovery and lung function', section: 'Pillar 04',
+      keywords: ['recovery science', 'breath', 'lung function', 'oxygen', 'vo2'],
+      content: "Lung function and recovery quality predict body composition outcomes more than people realize. Better breathing means better workouts, better sleep, better recovery — compounding gains over time." },
+
+    { page: '/science', title: 'Cart analyzer — what your stack does', section: 'Personalized',
+      keywords: ['analyze', 'analyzer', 'breakdown', 'explain my cart', 'what does my stack do', 'personalized', 'analysis', 'why am i taking', 'what does this do', 'science of my cart'],
+      content: "The science page has a cart analyzer that breaks down every product in your bundle — what it does, why it's in your stack, who it's best for, and the research behind it. It also flags synergies between products you've combined. Add products at /shop, then visit /science to see your personalized analysis." },
+
+    { page: '/science', title: 'Research generator — find the studies yourself', section: 'Dig deeper',
+      keywords: ['research', 'study', 'studies', 'pubmed', 'scholar', 'examine', 'cochrane', 'find studies', 'dig deeper', 'evidence', 'peer reviewed', 'citation', 'paper', 'journal', 'literature', 'is it real', 'does it work'],
+      content: "The science page has a research generator at the bottom — type any health, supplement, or training question and it sends you straight to PubMed, Google Scholar, Examine.com, and Cochrane Reviews with the search pre-filled. Best way to verify any claim with real peer-reviewed evidence." },
+
+    // ABOUT — principles
+    { page: '/about', title: 'No 12-week packages', section: 'Promises',
+      keywords: ['cancel', 'cancellation', 'refund', 'lock in', 'package', '12-week', '12 week', 'commit', 'contract', 'lock you in'],
+      content: "Cancel any time, in one tap. 7-day refund window, no questions asked. We don't believe in hard-to-cancel subscriptions. If we're earning $3, we earn it monthly." },
+
+    { page: '/about', title: 'Third-party tested', section: 'Promises',
+      keywords: ['testing', 'third party', 'verified', 'certified', 'quality control', 'gmp'],
+      content: "Every supplement batch is tested by independent labs for purity, potency, and contaminants. Certificates of analysis available on request. No pixie dust ingredients, no proprietary blends." },
+
+    { page: '/about', title: 'No fake transformations', section: 'Promises',
+      keywords: ['transformation', 'before after', 'before/after', 'photo', 'fake', 'photoshop', 'real results'],
+      content: "Any before/after photos shown are real members or no photos at all. We'd rather be slow than dishonest. No paid testimonials, no AI-generated bodies." },
+
+    { page: '/about', title: 'No selling your data', section: 'Promises',
+      keywords: ['privacy', 'data', 'private', 'sell data', 'broker', 'tracking', 'advertiser'],
+      content: "Your weight, check-ins, and photos stay yours. We don't sell to advertisers, brokers, or anyone. Progress photos in the app are always private — only you see them." },
+
+    { page: '/about', title: 'Who built it', section: 'Founders',
+      keywords: ['founder', 'founders', 'team', 'who', 'built', 'background', 'story', 'who made', 'who started', 'creator', 'owner', 'maryland', 'towson', 'susquehanna', 'baseball', 'football', 'college athlete', 'athlete', 'athletes'],
+      content: "Growbeaux is built by college athletes from Maryland — guys who played baseball at Towson and football at Susquehanna. Years inside locker rooms, weight rooms, and team meal halls. We're building the program we wished we had at 22 — for men who want to lose the weight without losing themselves." },
+
+    // WHY MEN
+    { page: '/', title: 'Why men only', section: 'FAQ',
+      keywords: ['why men', 'men only', 'gender', 'women', 'female', 'male', 'sex'],
+      content: "Men lose weight differently — different protein needs, training response, recovery patterns. Most programs treat every body the same. Growbeaux doesn't. A women's-specific brand is in development." },
+
+    // COMMUNITY
+    { page: '/', title: 'The Group community', section: 'Foundation tier',
+      keywords: ['community', 'group', 'members', 'forum', 'chat', 'people', 'social', 'whop', 'discord', 'join', 'sign up', 'subscribe', 'how to join'],
+      content: "The Group is a private community of men actually doing the work — hosted on Whop at whop.com/growbeaux-the-group. Daily check-ins, wins, weekly protocol discussion. $3/month, locked for life as a founding member. Quiet competence over loud hype. No selling to other members. No DMs." },
+
+    // TRACKER APP
+    { page: '/', title: 'The tracker app', section: 'Features',
+      keywords: ['app', 'tracker', 'mobile', 'phone', 'iphone', 'android', 'dashboard', 'log', 'weight tracking'],
+      content: "Members get the tracker app — a mobile-first dashboard for weight logs, daily check-ins (energy, sleep, hunger, workout), progress photos (always private), and the community feed. Coming at members.growbeaux.com." },
+
+    // LAUNCH
+    { page: '/', title: 'When does it launch?', section: 'FAQ',
+      keywords: ['launch', 'when', 'release', 'available', 'live', 'open', 'date', 'soon', '2026'],
+      content: "Soon. Waitlist members get first access and founding pricing locked for life. We'd rather launch right than launch fast." },
+
+    // CONTACT
+    { page: '/contact', title: 'Contact us', section: 'Contact',
+      keywords: ['contact', 'email', 'support', 'help', 'human', 'reach', 'talk', 'message', 'get in touch'],
+      content: "Email hello@growbeaux.com for anything — questions, partnerships, press, support. Real humans reply within a day or two." },
+
+    // PRIVACY ON APP
+    { page: '/', title: 'Photo privacy', section: 'App',
+      keywords: ['photo privacy', 'photos', 'progress photo', 'picture', 'image'],
+      content: "Progress photos in the tracker app are always private — never visible to other members. Daily check-ins can be private OR shared to The Group, your choice." },
+
+    // PARTNERS
+    { page: '/contact', title: 'Partnerships', section: 'Contact',
+      keywords: ['partner', 'partnership', 'business', 'wholesale', 'b2b', 'affiliate'],
+      content: "For partnerships, email hello@growbeaux.com with 'partnership' in the subject. We respond within a day or two." },
+
+    // PRESS
+    { page: '/contact', title: 'Press inquiries', section: 'Contact',
+      keywords: ['press', 'media', 'journalist', 'reporter', 'interview', 'feature', 'story'],
+      content: "Press: email hello@growbeaux.com with 'press' in the subject. Brand kit and founder interviews available on request." },
+
+    { page: '/privacy', title: 'Privacy policy', section: 'Privacy',
+      keywords: ['privacy', 'data', 'cookies', 'tracking', 'gdpr', 'ccpa', 'personal info', 'delete my data', 'sell my data', 'collect', 'collected'],
+      content: "We collect the minimum we need: messages you send us, anonymous Vercel Analytics, and local browser storage for your stack. We never sell your data, never use ad-tracking pixels, never run Facebook/Google/TikTok pixels. Email hello@growbeaux.com to request your data or delete it. Full details at /privacy." },
+
+    { page: '/shop', title: 'Preview imagery — product photos', section: 'About the photos',
+      keywords: ['real photo', 'real product', 'preview', 'is this real', 'fake', 'mockup', 'render', 'cgi', 'ai generated', 'when ships', 'when will products', 'launch', 'q3'],
+      content: "The product images on the shop page are preview imagery — they show our launch packaging design, but the products aren't shipping yet. Final supplements launch Q3 2026. Founding members on The Group ($3/mo on Whop) get notified first when supplements drop." },
+  ];
+
+  // -------- INTELLIGENT SEARCH --------
+  // Splits the user query into terms, scores each indexed item by how many term hits it has.
+  // Title, keywords, and content are weighted differently. Returns top matches.
+  function search(query) {
+    const stop = new Set(['the','a','an','is','of','for','to','and','in','on','my','i','me','it','this','that','do','does','can','what','how','why','when','where','about','like','tell','show','give','am','are','have','has','need','want','would']);
+    const terms = query.toLowerCase()
+      .replace(/[^\w\s'-]/g, ' ')
+      .split(/\s+/)
+      .filter(t => t.length > 1 && !stop.has(t));
+
+    if (terms.length === 0) return [];
+
+    const scored = siteIndex.map(item => {
+      let score = 0;
+      const haystack = {
+        title: item.title.toLowerCase(),
+        kw: item.keywords.join(' ').toLowerCase(),
+        content: item.content.toLowerCase(),
+        section: (item.section || '').toLowerCase(),
+      };
+      for (const term of terms) {
+        if (haystack.kw.includes(term)) score += 5;
+        if (haystack.title.includes(term)) score += 4;
+        if (haystack.section.includes(term)) score += 2;
+        if (haystack.content.includes(term)) score += 1;
+        // Partial match bonus for keyword-like terms
+        for (const kw of item.keywords) {
+          if (kw.includes(term) || term.includes(kw)) score += 2;
+        }
+      }
+      return { item, score };
+    }).filter(r => r.score > 0)
+      .sort((a, b) => b.score - a.score);
+
+    return scored.slice(0, 3).map(r => r.item);
+  }
+
+  // -------- RESPONSE BUILDER --------
+  function buildResponse(query) {
+    const matches = search(query);
+
+    if (matches.length === 0) {
+      return {
+        text: "I couldn't find that on the site. Try searching different terms, or <a href='/contact'>send a message</a> and a real human will get back to you within 1-2 business days.",
+        chips: ['How much does it cost?', 'How does it work?', 'Tell me about supplements']
+      };
+    }
+
+    const top = matches[0];
+    const others = matches.slice(1);
+
+    let text = top.content;
+    if (top.page && top.page !== '/') {
+      text += ` <a href="${top.page}">Read more →</a>`;
+    } else if (top.page === '/' && top.section !== 'Hero') {
+      text += ` <a href="${top.page}">View on homepage →</a>`;
+    }
+
+    // If we have related results, add them as chips
+    let chips = [];
+    if (others.length > 0) {
+      chips = others.map(o => o.title);
+    } else {
+      chips = ['How much does it cost?', 'How does it work?', 'Where can I sign up?'];
+    }
+
+    return { text, chips };
+  }
+
+  function addMsg(text, who) {
+    const div = document.createElement('div');
+    div.className = 'gb-msg ' + who;
+    div.innerHTML = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+
+  function addChips(chips) {
+    if (!chips || !chips.length) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'gb-chips';
+    chips.forEach(c => {
+      const btn = document.createElement('button');
+      btn.className = 'gb-chip';
+      btn.textContent = c;
+      btn.onclick = () => {
+        wrap.remove();
+        handleSend(c);
+      };
+      wrap.appendChild(btn);
+    });
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function handleSend(text) {
+    if (!text) return;
+    addMsg(text, 'user');
+    input.value = '';
+    setTimeout(() => {
+      const r = buildResponse(text);
+      addMsg(r.text, 'bot');
+      setTimeout(() => addChips(r.chips), 200);
+    }, 400);
+  }
+
+  let greeted = false;
+  function greet() {
+    if (greeted) return;
+    greeted = true;
+    setTimeout(() => {
+      addMsg("Hey — I'm the Growbeaux assistant. Ask me anything about the program, pricing, supplements, or the science. I search the entire site to find your answer.", 'bot');
+      setTimeout(() => addChips([
+        'How much does it cost?',
+        'Tell me about supplements',
+        'What does the science say?',
+        'How is this different?'
+      ]), 300);
+    }, 200);
+  }
+
+  toggle.addEventListener('click', () => {
+    win.classList.toggle('open');
+    toggle.classList.toggle('active');
+    if (win.classList.contains('open')) greet();
+  });
+
+  send.addEventListener('click', () => handleSend(input.value.trim()));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSend(input.value.trim());
+  });
+
+  const gbChatClose = document.getElementById("gb-chat-close");
+  if (gbChatClose) {
+    gbChatClose.addEventListener("click", () => {
+      win.classList.remove("open");
+      toggle.classList.remove("active");
+    });
+  }
+})();
+</script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+
+
+<script>
+// ============== VISUAL UPGRADE PACK ==============
+(function() {
+  // 1. Cursor glow (desktop only, non-touch)
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+    
+    let rafId = null;
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      glow.classList.add('active');
+      if (!rafId) animate();
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      glow.classList.remove('active');
+    });
+    
+    function animate() {
+      // Smooth lerp
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      glow.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+      
+      if (Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        rafId = null;
+      }
+    }
+  }
+  
+  // 2. Scroll reveal — auto-tag cards and content blocks
+  const revealSelectors = [
+    '.product-card', '.tier', '.principle', '.pillar', '.faq-item',
+    '.step', '.roadmap-card', '.summary-card', '.disclaimer'
+  ];
+  const revealEls = document.querySelectorAll(revealSelectors.join(','));
+  
+  if ('IntersectionObserver' in window && revealEls.length > 0) {
+    revealEls.forEach((el, i) => {
+      el.classList.add('reveal');
+      // Stagger reveals by 60ms within visible groups
+      el.style.transitionDelay = `${(i % 4) * 60}ms`;
+    });
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+    
+    revealEls.forEach(el => observer.observe(el));
+  }
+})();
+</script>
+
+</body>
+</html>

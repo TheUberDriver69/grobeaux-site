@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy · Growbeaux</title>
+<meta name="description" content="How Growbeaux handles your data, plain and simple. We don't sell data, don't use ad-tracking pixels.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growbeaux.com/privacy">
+<meta property="og:title" content="Privacy — Growbeaux">
+<meta property="og:description" content="Your data, explained. No selling, no tracking pixels, no fine print.">
+<meta property="og:image" content="https://growbeaux.com/og-image.jpg">
+<meta property="og:site_name" content="Growbeaux">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://growbeaux.com/privacy">
+<meta name="twitter:title" content="Privacy — Growbeaux">
+<meta name="twitter:description" content="Your data, explained. No selling, no tracking pixels, no fine print.">
+<meta name="twitter:image" content="https://growbeaux.com/og-image.jpg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://growbeaux.com/privacy">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0e0b14">
+<meta name="apple-mobile-web-app-title" content="Growbeaux">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b14; --bg-1: #17131f; --bg-2: #1f1a2b;
+    --ink: #f5f0f5; --ink-soft: #b8adc4; --ink-faded: #6a5f7a;
+    --mint: #a8e6cf; --peach: #ffb7a0; --lavender: #c8b6ff; --sky: #a0d8ff;
+    --rule: rgba(245,240,245,0.08); --rule-strong: rgba(245,240,245,0.18);
+    --sans: 'Geist', -apple-system, sans-serif;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --mono: 'Geist Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh;
+  }
+  body::after {
+    content: ''; position: fixed; top: -30vh; left: 0; width: 100vw; height: 120vh;
+    pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 50% 50% at 50% 30%, rgba(168,230,207,0.06), transparent 70%);
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(24px); background: rgba(14,11,20,0.6); border-bottom: 1px solid var(--rule);
+  }
+  .logo { font-family: var(--sans); font-weight: 800; font-size: 22px; letter-spacing: -0.03em; color: #fff; text-decoration: none; }
+  .nav-back {
+    font-family: var(--sans); font-size: 13px; color: var(--ink-soft);
+    text-decoration: none; font-weight: 500;
+  }
+  .nav-back:hover { color: var(--mint); }
+
+  main {
+    max-width: 760px; margin: 0 auto; padding: 140px 28px 80px;
+    position: relative; z-index: 1;
+  }
+  .tag {
+    display: inline-block; font-family: var(--sans); font-size: 12px;
+    color: var(--ink-faded); letter-spacing: 0.04em; font-weight: 500;
+    margin-bottom: 24px; opacity: 0.85;
+  }
+  h1 {
+    font-family: var(--sans); font-weight: 800; font-size: clamp(40px, 6vw, 64px);
+    letter-spacing: -0.04em; line-height: 1; margin-bottom: 28px;
+  }
+  h1 .accent { color: var(--mint); }
+
+  .lede {
+    font-size: 19px; color: var(--ink-soft); line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+  .updated {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-faded);
+    letter-spacing: 0.05em; margin-bottom: 56px;
+  }
+
+  h2 {
+    font-family: var(--sans); font-weight: 800; font-size: 28px;
+    letter-spacing: -0.025em; margin: 56px 0 16px; color: var(--ink);
+  }
+  h2 .num {
+    color: var(--mint); font-family: var(--serif); font-style: italic;
+    margin-right: 14px; font-weight: 400;
+  }
+
+  p {
+    color: var(--ink-soft); font-size: 16px; line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  p strong { color: var(--ink); font-weight: 600; }
+  p a { color: var(--mint); text-decoration: none; border-bottom: 1px solid rgba(168,230,207,0.3); }
+  p a:hover { border-bottom-color: var(--mint); }
+
+  ul {
+    list-style: none; padding: 0; margin: 16px 0 24px;
+  }
+  ul li {
+    color: var(--ink-soft); font-size: 16px; line-height: 1.6;
+    padding: 6px 0 6px 22px; position: relative;
+  }
+  ul li::before {
+    content: '→'; position: absolute; left: 0; color: var(--mint);
+  }
+
+  .callout {
+    margin: 32px 0;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: rgba(168,230,207,0.05);
+    border-left: 3px solid var(--mint);
+  }
+  .callout p { margin: 0; color: var(--ink); font-size: 15px; }
+  .callout strong { color: var(--mint); font-weight: 600; }
+
+  .summary-card {
+    margin: 32px 0 56px;
+    padding: 28px 32px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.06), rgba(160,216,255,0.04));
+    border: 1px solid var(--rule);
+  }
+  .summary-card h3 {
+    font-family: var(--sans); font-weight: 700; font-size: 17px;
+    letter-spacing: -0.01em; margin-bottom: 12px; color: var(--ink);
+  }
+  .summary-card p {
+    margin-bottom: 8px; font-size: 15px; color: var(--ink-soft);
+  }
+  .summary-card p:last-child { margin-bottom: 0; }
+
+  .end-cta {
+    margin-top: 80px; padding: 32px;
+    border: 1px solid var(--rule); border-radius: 18px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.04), rgba(255,183,160,0.03));
+    text-align: center;
+  }
+  .end-cta h3 { font-family: var(--sans); font-weight: 800; font-size: 22px; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .end-cta p { color: var(--ink-soft); font-size: 14px; margin-bottom: 20px; }
+  .end-cta a {
+    display: inline-block; padding: 12px 22px; background: var(--mint); color: var(--bg);
+    text-decoration: none; border: none; font-family: var(--sans); font-weight: 700;
+    font-size: 14px; border-radius: 10px;
+  }
+
+  footer {
+    padding: 32px; border-top: 1px solid var(--rule); margin-top: 64px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--sans); font-size: 13px; letter-spacing: 0.01em;
+    color: var(--ink-faded); font-weight: 500;
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--ink-faded); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--mint); }
+  footer .logo { font-size: 18px; }
+
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    main { padding: 120px 20px 60px; }
+    h1 { font-size: 40px; }
+    h2 { font-size: 22px; margin: 40px 0 12px; }
+    h2 .num { margin-right: 8px; }
+    .summary-card, .end-cta { padding: 22px; }
+    footer { flex-direction: column; gap: 16px; padding: 24px; text-align: center; }
+  }
+
+  /* ============== VISUAL UPGRADE PACK ============== */
+  
+  /* Premium glass nav */
+  nav {
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    background: linear-gradient(180deg, rgba(14,11,20,0.85), rgba(14,11,20,0.4)) !important;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  nav::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(circle at 20% 50%, rgba(168,230,207,0.04), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(200,182,255,0.04), transparent 50%);
+  }
+  
+  /* Cursor glow follower (desktop only) */
+  .cursor-glow {
+    position: fixed; top: 0; left: 0; pointer-events: none;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(168,230,207,0.06), rgba(160,216,255,0.03) 40%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    will-change: transform;
+    mix-blend-mode: screen;
+    opacity: 0;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .cursor-glow.active { opacity: 1; }
+  }
+  @media (max-width: 700px) {
+    .cursor-glow { display: none; }
+  }
+  
+  /* Scroll reveal — elements fade up as they enter viewport */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Tactile button feedback — scale down on press */
+  button:not(:disabled):active,
+  a.cta-primary:active,
+  .cta-primary:active,
+  .product-card-add:active,
+  .bundle-bar-cta:active,
+  .goal-btn:active {
+    transform: scale(0.97);
+    transition: transform 0.08s ease !important;
+  }
+  
+  /* Subtle ambient inner glow on cards on hover */
+  .product-card,
+  .tier,
+  .principle,
+  .pillar,
+  .roadmap-card,
+  .chart-card {
+    box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset;
+    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  .product-card:hover,
+  .tier:hover,
+  .principle:hover,
+  .pillar:hover,
+  .roadmap-card:hover {
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 0 0 1px rgba(168,230,207,0.12),
+      0 24px 48px -12px rgba(0,0,0,0.5);
+  }
+  
+  /* Page transition — fade in on initial load */
+  @keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  main, body > section:first-of-type {
+    animation: pageFadeIn 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  
+  /* Reduced motion — respect user preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .cursor-glow { display: none; }
+  }
+  
+  /* View transitions API (Chromium browsers) */
+  @supports (view-transition-name: root) {
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.3s;
+      animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+  }
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://growbeaux.com/#organization",
+      "name": "Growbeaux",
+      "legalName": "Growbeaux LLC",
+      "url": "https://growbeaux.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://growbeaux.com/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "A $3/month men's health and weight loss program. Real protocols, supplements, and community — engineered for men.",
+      "foundingDate": "2026",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "MD",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@growbeaux.com",
+        "contactType": "Customer Support",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      },
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://growbeaux.com/#website",
+      "url": "https://growbeaux.com",
+      "name": "Growbeaux",
+      "description": "Lose the weight. Keep yourself.",
+      "publisher": {
+        "@id": "https://growbeaux.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://growbeaux.com/privacy#webpage",
+      "url": "https://growbeaux.com/privacy",
+      "name": "Privacy — Growbeaux",
+      "isPartOf": { "@id": "https://growbeaux.com/#website" },
+      "description": "How Growbeaux handles your data, plain and simple.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://growbeaux.com" },
+          { "@type": "ListItem", "position": 2, "name": "Privacy", "item": "https://growbeaux.com/privacy" }
+        ]
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Growbeaux</a>
+  <a href="/" class="nav-back">← Back home</a>
+</nav>
+
+<main>
+  <div class="tag">Privacy</div>
+  <h1>Your data, <span class="accent">explained.</span></h1>
+
+  <p class="lede">No legalese, no walls of fine print. Here's exactly what we collect, why we collect it, and what we do with it.</p>
+  <p class="updated">Last updated: April 29, 2026</p>
+
+  <div class="summary-card">
+    <h3>The TL;DR</h3>
+    <p>We collect the bare minimum we need to run the site and respond to your messages. We don't sell your data, ever. We don't track you across the internet. If you ever want your information deleted, email <a href="mailto:hello@growbeaux.com" style="color:var(--mint);text-decoration:none;border-bottom:1px solid rgba(168,230,207,0.3);">hello@growbeaux.com</a> and we'll handle it within 30 days.</p>
+  </div>
+
+  <h2><span class="num">1</span>Who we are</h2>
+  <p>Growbeaux LLC is a Maryland-based company operating <strong>growbeaux.com</strong>. If you have any questions about this policy or how we handle your data, reach us at <a href="mailto:hello@growbeaux.com">hello@growbeaux.com</a>.</p>
+
+  <h2><span class="num">2</span>What we collect</h2>
+  <p>We try to collect as little as possible. Here's the full list:</p>
+
+  <ul>
+    <li><strong>Information you give us directly</strong> — When you fill out the contact form or send us an email, we receive whatever you write us (name, email, message).</li>
+    <li><strong>Basic site analytics</strong> — Vercel Analytics tells us how many people visit which pages. It doesn't track you personally and uses no cookies. No identifying data, no cross-site profiling.</li>
+    <li><strong>Local browser storage</strong> — When you build a stack on the shop page, your bundle is saved in your browser's local storage so it persists across visits. This data lives on your device only — it never reaches us.</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>What we don't collect:</strong> we don't ask for your address, phone number, payment info, social media accounts, IP address logs, or anything else. We don't use Facebook Pixel, Google Analytics, TikTok Pixel, or any other ad-tracking tools.</p>
+  </div>
+
+  <h2><span class="num">3</span>What we do with it</h2>
+  <p>We use the limited information we collect to:</p>
+  <ul>
+    <li>Respond to messages you send us</li>
+    <li>Understand which parts of the site are useful (so we can make them better)</li>
+    <li>Remember your stack between visits, on the device you built it on</li>
+  </ul>
+
+  <p>That's it. We don't profile you, target ads at you, or build behavioral models of who you are.</p>
+
+  <h2><span class="num">4</span>Who we share it with</h2>
+  <p><strong>Almost no one.</strong> The only third-party services that touch any of your data are:</p>
+  <ul>
+    <li><strong>Vercel</strong> — hosts the website and provides anonymous traffic analytics</li>
+    <li><strong>Google Workspace</strong> — runs hello@growbeaux.com email</li>
+  </ul>
+  <p>We never sell your data, share it with advertisers, or hand it to data brokers. We will only ever share information if legally required to (e.g., responding to a valid court order).</p>
+
+  <h2><span class="num">5</span>Cookies and tracking</h2>
+  <p>The site uses <strong>localStorage</strong> in your browser to save your stack and chat preferences. These are not cookies — they're data stored locally on your device that never gets sent anywhere. You can clear them any time in your browser's site settings.</p>
+  <p>We do not use any third-party cookies, ad tracking pixels, or cross-site profiling tools.</p>
+
+  <h2><span class="num">6</span>Your rights</h2>
+  <p>You have the right to:</p>
+  <ul>
+    <li><strong>Know what we have on you</strong> — email us and we'll tell you everything in our records (which, for most visitors, is nothing)</li>
+    <li><strong>Have it deleted</strong> — email us and we'll wipe anything tied to you within 30 days</li>
+    <li><strong>Correct anything wrong</strong> — same channel, same response time</li>
+    <li><strong>Opt out of any future marketing</strong> — applies if and when we ever start an email list</li>
+  </ul>
+  <p>For California residents (CCPA) and EU/UK residents (GDPR), the same rights apply with stronger legal backing — and the same email gets you the same response.</p>
+
+  <h2><span class="num">7</span>Children</h2>
+  <p>Growbeaux is built for adult men. The site, the products, the community — none of it is intended for anyone under 18. We don't knowingly collect information from minors. If we learn we've collected information from someone under 18, we delete it.</p>
+
+  <h2><span class="num">8</span>Data security</h2>
+  <p>We take reasonable steps to protect what little we collect. The site uses HTTPS (encrypted connections), and the few systems we rely on (Vercel, Google Workspace) are industry-standard with their own security practices.</p>
+  <p>That said: <strong>no system is 100% secure.</strong> If a breach ever occurs that affects you, we'll let you know within 72 hours and explain what happened.</p>
+
+  <h2><span class="num">9</span>Changes to this policy</h2>
+  <p>If we change how we handle data, we'll update this page and update the "last updated" date at the top. For substantial changes (like if we ever add email signups), we'll do our best to give visitors a heads up at the time of the change.</p>
+
+  <h2><span class="num">10</span>Questions or concerns</h2>
+  <p>Email us at <a href="mailto:hello@growbeaux.com">hello@growbeaux.com</a>. Real humans on the other end. We try to reply within a day or two.</p>
+
+  <div class="end-cta">
+    <h3>That's the whole thing.</h3>
+    <p>Short on purpose. If something's not clear, just ask.</p>
+    <a href="mailto:hello@growbeaux.com">Email us →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="logo">Growbeaux</div>
+  <div class="footer-links">
+    <a href="/shop">Shop</a>
+    <a href="/about">About</a>
+    <a href="/science">Science</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+  <div>© 2026</div>
+</footer>
+
+
+<script>
+// ============== VISUAL UPGRADE PACK ==============
+(function() {
+  // 1. Cursor glow (desktop only, non-touch)
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+    
+    let rafId = null;
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      glow.classList.add('active');
+      if (!rafId) animate();
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      glow.classList.remove('active');
+    });
+    
+    function animate() {
+      // Smooth lerp
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      glow.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
+      
+      if (Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        rafId = null;
+      }
+    }
+  }
+  
+  // 2. Scroll reveal — auto-tag cards and content blocks
+  const revealSelectors = [
+    '.product-card', '.tier', '.principle', '.pillar', '.faq-item',
+    '.step', '.roadmap-card', '.summary-card', '.disclaimer'
+  ];
+  const revealEls = document.querySelectorAll(revealSelectors.join(','));
+  
+  if ('IntersectionObserver' in window && revealEls.length > 0) {
+    revealEls.forEach((el, i) => {
+      el.classList.add('reveal');
+      // Stagger reveals by 60ms within visible groups
+      el.style.transitionDelay = `${(i % 4) * 60}ms`;
+    });
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+    
+    revealEls.forEach(el => observer.observe(el));
+  }
+})();
+</script>
+
+</body>
+</html>
