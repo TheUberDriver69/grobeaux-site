@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · Growbeaux</title>
+<meta name="description" content="Why Growbeaux exists.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b14; --bg-1: #17131f; --bg-2: #1f1a2b;
+    --ink: #f5f0f5; --ink-soft: #b8adc4; --ink-faded: #6a5f7a;
+    --mint: #a8e6cf; --peach: #ffb7a0; --lavender: #c8b6ff; --sky: #a0d8ff;
+    --rule: rgba(245,240,245,0.08); --rule-strong: rgba(245,240,245,0.18);
+    --sans: 'Geist', -apple-system, sans-serif;
+    --mono: 'Geist Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::after {
+    content: ''; position: fixed; top: -30vh; left: 0; width: 100vw; height: 120vh;
+    pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 40% 40% at 20% 20%, rgba(168,230,207,0.08), transparent 70%),
+      radial-gradient(ellipse 35% 35% at 80% 30%, rgba(255,183,160,0.08), transparent 70%);
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(24px); background: rgba(14,11,20,0.6); border-bottom: 1px solid var(--rule);
+  }
+  .logo { font-family: var(--sans); font-weight: 800; font-size: 22px; letter-spacing: -0.03em; color: #fff; text-decoration: none; }
+  .nav-back {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-soft);
+    letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; font-weight: 500;
+  }
+  .nav-back:hover { color: var(--mint); }
+
+  .menu-wrap { position: relative; }
+  .menu-trigger {
+    display: flex; align-items: center; gap: 8px;
+    background: transparent; border: 1px solid var(--rule-strong); color: var(--ink);
+    font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: -0.01em;
+    padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all 0.2s;
+  }
+  .menu-trigger:hover { border-color: var(--mint); background: rgba(168,230,207,0.12); }
+  .menu-trigger svg { transition: transform 0.2s; }
+  .menu-trigger.open svg { transform: rotate(180deg); }
+
+  .dropdown {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    min-width: 220px; background: var(--bg-1);
+    border: 1px solid var(--rule-strong); border-radius: 16px; padding: 8px;
+    opacity: 0; pointer-events: none; transform: translateY(-4px);
+    transition: all 0.2s; backdrop-filter: blur(20px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    z-index: 60;
+  }
+  .dropdown.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .dropdown a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-radius: 10px; color: var(--ink); text-decoration: none;
+    font-family: var(--sans); font-weight: 500; font-size: 14px; transition: all 0.15s;
+  }
+  .dropdown a:hover { background: rgba(168,230,207,0.12); color: var(--mint); }
+  .dropdown a .arrow { color: var(--ink-faded); font-family: var(--mono); transition: transform 0.15s; }
+  .dropdown a:hover .arrow { color: var(--mint); transform: translateX(2px); }
+
+  /* The Group CTA — primary action in dropdown */
+  .dropdown a.dropdown-cta {
+    margin-top: 8px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.12), rgba(160,216,255,0.08));
+    border: 1px solid rgba(168,230,207,0.25);
+    color: var(--mint);
+    font-weight: 600;
+  }
+  .dropdown a.dropdown-cta:hover {
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg);
+    border-color: var(--mint);
+  }
+  .dropdown a.dropdown-cta .arrow {
+    color: var(--mint);
+  }
+  .dropdown a.dropdown-cta:hover .arrow {
+    color: var(--bg);
+  }
+
+  main { position: relative; z-index: 2; padding: 140px 32px 80px; max-width: 760px; margin: 0 auto; }
+
+  .tag { display: inline-block; font-family: var(--sans); font-size: 12px; color: var(--ink-faded); letter-spacing: 0.04em; font-weight: 500; margin-bottom: 24px; opacity: 0.85; }
+  .tag::before { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, var(--mint), var(--lavender)); }
+
+  h1 {
+    font-family: var(--sans); font-weight: 800;
+    font-size: clamp(48px, 7vw, 88px); line-height: 1; letter-spacing: -0.04em;
+    margin-bottom: 32px;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .lede {
+    font-size: 22px; color: var(--ink-soft); line-height: 1.5;
+    margin-bottom: 64px; font-weight: 400;
+  }
+
+  h2 {
+    font-family: var(--sans); font-weight: 800; font-size: 28px;
+    letter-spacing: -0.025em; margin: 64px 0 16px; line-height: 1.2;
+  }
+  h2 .peach {
+    background: linear-gradient(135deg, var(--peach), #ffb3d1);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  p {
+    font-size: 17px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 18px;
+  }
+  p strong { color: var(--ink); font-weight: 600; }
+
+  .pull-quote {
+    margin: 56px 0;
+    padding: 32px 36px;
+    border-left: 3px solid var(--mint);
+    background: rgba(168,230,207,0.04);
+    border-radius: 0 16px 16px 0;
+  }
+  .pull-quote p {
+    font-size: 22px; line-height: 1.4; color: var(--ink); font-weight: 500;
+    margin: 0; letter-spacing: -0.01em;
+  }
+
+  .principles {
+    margin: 56px 0;
+    display: grid; gap: 16px;
+  }
+  .principle {
+    padding: 24px 28px;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+  }
+  .principle-num {
+    font-family: var(--mono); font-size: 11px; color: var(--mint);
+    letter-spacing: 0.15em; font-weight: 600; margin-bottom: 8px;
+  }
+  .principle h3 {
+    font-family: var(--sans); font-weight: 700; font-size: 18px;
+    letter-spacing: -0.01em; margin-bottom: 6px;
+  }
+  .principle p { font-size: 15px; margin: 0; line-height: 1.55; }
+
+  .founders {
+    margin: 56px 0 80px;
+    padding: 40px 36px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.04), rgba(255,183,160,0.03));
+    border: 1px solid var(--rule);
+  }
+  .founders-lede {
+    font-family: var(--sans);
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .founders-lede strong {
+    color: var(--mint);
+    font-weight: 700;
+  }
+  .founders p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+  .founders p:last-of-type { margin-bottom: 0; }
+  .founders p em {
+    font-style: italic;
+    color: var(--ink);
+  }
+  .founders-signoff {
+    margin-top: 28px !important;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 17px !important;
+    color: var(--ink) !important;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  @media (max-width: 700px) {
+    .founders { padding: 28px 22px; }
+    .founders-lede { font-size: 19px; }
+  }
+
+  .end-cta {
+    margin-top: 80px;
+    padding: 40px 32px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.06), rgba(200,182,255,0.06));
+    border: 1px solid var(--rule);
+    text-align: center;
+  }
+  .end-cta h3 {
+    font-family: var(--sans); font-weight: 800; font-size: 28px;
+    letter-spacing: -0.03em; margin-bottom: 12px;
+  }
+  .end-cta p { font-size: 14px; margin-bottom: 20px; }
+  .end-cta a {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--bg); font-weight: 700; font-size: 13px;
+    letter-spacing: -0.01em; border-radius: 999px; text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .end-cta a:hover { transform: translateY(-1px); }
+
+  footer {
+    padding: 32px; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--sans); font-size: 13px; letter-spacing: 0.01em;
+    color: var(--ink-faded); font-weight: 500; position: relative; z-index: 2;
+  }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--ink-faded); text-decoration: none; }
+  .footer-links a:hover { color: var(--mint); }
+  footer .logo { font-size: 18px; }
+
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .logo { font-size: 20px; }
+    main { padding: 110px 20px 60px; }
+    .lede { font-size: 18px; }
+    p { font-size: 16px; }
+    .pull-quote { padding: 24px 24px; }
+    .pull-quote p { font-size: 18px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Growbeaux</a>
+  <div class="menu-wrap">
+    <button class="menu-trigger" id="menu-trigger">
+      <span>Menu</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="dropdown" id="dropdown">
+      <a href="/"><span>Home</span><span class="arrow">→</span></a>
+      <a href="/shop"><span>Shop</span><span class="arrow">→</span></a>
+      <a href="/#how"><span>How it works</span><span class="arrow">→</span></a>
+      <a href="/about"><span>About</span><span class="arrow">→</span></a>
+      <a href="/#faq"><span>FAQ</span><span class="arrow">→</span></a>
+      <a href="/science"><span>Science</span><span class="arrow">→</span></a>
+      <a href="/contact"><span>Contact</span><span class="arrow">→</span></a>
+        <a href="https://whop.com/growbeaux-the-group" target="_blank" rel="noopener noreferrer" class="dropdown-cta"><span>The Group</span><span class="arrow">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="tag">About</div>
+  <h1>Why <span class="accent">Growbeaux</span> exists.</h1>
+
+  <p class="lede">Most weight loss programs are either useless ($60/mo for a meal plan an LLM could write) or predatory (12-week packages, autorenewing fees, advice that breaks you down to sell you the fix). Growbeaux is built differently because we're tired of watching men get fleeced for trying to take care of themselves.</p>
+
+  <h2>The simple version.</h2>
+  <p>$3 a month gets you a real protocol, a tracker, and a community of men actually doing the work. That's it. Supplements are available if you want them — at member pricing — but they're <strong>optional</strong>. The program works without them.</p>
+
+  <p>We make money on supplements. We don't make money tricking people into renewals.</p>
+
+  <div class="pull-quote">
+    <p>The whole industry is built on selling fixes that don't work, then selling another one when the first one fails. We're not interested in that game.</p>
+  </div>
+
+  <h2>What we <span class="peach">won't do.</span></h2>
+
+  <div class="principles">
+    <div class="principle">
+      <h3>No 12-week packages</h3>
+      <p>Cancel any time, in one tap. If we're earning $3, we should be earning it monthly.</p>
+    </div>
+    <div class="principle">
+      <h3>Third-party tested</h3>
+      <p>Every supplement batch is tested by independent labs for purity, potency, and contaminants. Certificates of analysis available on request. No proprietary blends, no fillers, no marketing dust.</p>
+    </div>
+    <div class="principle">
+      <h3>No fake transformations</h3>
+      <p>The "before/after" photos you'll see are real members or no photos at all. We'd rather be slow than dishonest.</p>
+    </div>
+    <div class="principle">
+      <h3>No selling your data</h3>
+      <p>Your weight, your check-ins, your photos — they stay yours. We don't sell to advertisers, brokers, or anyone.</p>
+    </div>
+  </div>
+
+  <h2>Who's behind it.</h2>
+
+  <div class="founders">
+    <p class="founders-lede">Growbeaux is built by college athletes from Maryland — guys who played baseball at <strong>Towson</strong> and football at <strong>Susquehanna</strong>.</p>
+
+    <p>We've spent years inside locker rooms, weight rooms, and team meal halls. We've watched friends crash diet through preseason. We've seen guys lose weight too fast and lose the muscle they spent four years building. We've been the guys who cut wrong and looked smaller, not leaner.</p>
+
+    <p>Most weight loss programs are built by marketers who never had to make weight, never had to perform, never had to actually <em>keep</em> the body they were trying to change. That gap is why this exists.</p>
+
+    <p>We're not influencers. We're not promising a six-pack in twelve weeks. We're building the program we wished we had when we were 22 and trying to figure it out. Real protocols. Real accountability. Real men doing the work alongside you in The Group.</p>
+
+    <p class="founders-signoff">If you're trying to lose the weight without losing yourself — we built this for you.</p>
+  </div>
+
+  <div class="end-cta">
+    <h3>Ready when you are.</h3>
+    <p>Founding members lock in $3/mo for life.</p>
+    <a href="https://whop.com/growbeaux-the-group" target="_blank" rel="noopener noreferrer">Join The Group · $3/mo →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="logo">Growbeaux</div>
+  <div class="footer-links">
+    <a href="/shop">Shop</a>
+    <a href="/about">About</a>
+    <a href="/science">Science</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+  <div>© 2026</div>
+</footer>
+
+<script>
+  const trigger = document.getElementById("menu-trigger");
+  const dropdown = document.getElementById("dropdown");
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    trigger.classList.toggle("open");
+    dropdown.classList.toggle("open");
+  });
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target) && !trigger.contains(e.target)) {
+      trigger.classList.remove("open");
+      dropdown.classList.remove("open");
+    }
+  });
+</script>
+
+<!-- AI ASSISTANT CHATBOT -->
+<style>
+  .gb-chat-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #a8e6cf, #a0d8ff);
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(168,230,207,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s cubic-bezier(0.2,0.9,0.3,1);
+    animation: chatPulse 3s ease-in-out infinite;
+  }
+  .gb-chat-toggle:hover { transform: scale(1.08); }
+  .gb-chat-toggle.active { animation: none; }
+  @keyframes chatPulse {
+    0%, 100% { box-shadow: 0 8px 32px rgba(168,230,207,0.35); }
+    50% { box-shadow: 0 8px 32px rgba(168,230,207,0.6), 0 0 0 12px rgba(168,230,207,0.08); }
+  }
+  .gb-chat-toggle svg { width: 26px; height: 26px; color: #0e0b14; }
+  .gb-chat-toggle .gb-close-icon { display: none; }
+  .gb-chat-toggle.active .gb-open-icon { display: none; }
+  .gb-chat-toggle.active .gb-close-icon { display: block; }
+
+  .gb-chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    z-index: 9998;
+    width: 380px;
+    max-width: calc(100vw - 48px);
+    height: 560px;
+    max-height: calc(100vh - 140px);
+    background: #17131f;
+    border: 1px solid rgba(245,240,245,0.18);
+    border-radius: 24px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px) scale(0.98);
+    transition: all 0.25s cubic-bezier(0.2,0.9,0.3,1);
+  }
+  .gb-chat-window.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .gb-chat-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(245,240,245,0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(168,230,207,0.06), rgba(200,182,255,0.06));
+  }
+  .gb-chat-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a8e6cf, #c8b6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Geist', sans-serif;
+    font-weight: 800;
+    color: #0e0b14;
+    font-size: 14px;
+  }
+  .gb-chat-header-info h4 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #f5f0f5;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .gb-chat-header-info p {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    color: #a8e6cf;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 2px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .gb-chat-header-info p::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a8e6cf;
+    box-shadow: 0 0 8px #a8e6cf;
+  }
+
+  .gb-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .gb-chat-messages::-webkit-scrollbar { width: 4px; }
+  .gb-chat-messages::-webkit-scrollbar-thumb { background: rgba(245,240,245,0.1); border-radius: 4px; }
+
+  .gb-msg {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: msgIn 0.3s cubic-bezier(0.2,0.9,0.3,1);
+  }
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .gb-msg.bot {
+    background: rgba(168,230,207,0.08);
+    color: #f5f0f5;
+    border: 1px solid rgba(168,230,207,0.15);
+    border-bottom-left-radius: 6px;
+    align-self: flex-start;
+  }
+  .gb-msg.user {
+    background: linear-gradient(135deg, #a8e6cf, #a0d8ff);
+    color: #0e0b14;
+    border-bottom-right-radius: 6px;
+    align-self: flex-end;
+    font-weight: 500;
+  }
+  .gb-msg a { color: #a8e6cf; text-decoration: underline; }
+
+  .gb-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .gb-chip {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(245,240,245,0.04);
+    border: 1px solid rgba(245,240,245,0.1);
+    color: #b8adc4;
+    font-family: 'Geist', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .gb-chip:hover {
+    border-color: #a8e6cf;
+    color: #a8e6cf;
+    background: rgba(168,230,207,0.06);
+  }
+
+  .gb-chat-input {
+    padding: 14px 16px;
+    border-top: 1px solid rgba(245,240,245,0.08);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #17131f;
+  }
+  .gb-chat-input input {
+    flex: 1;
+    padding: 10px 14px;
+    background: #0e0b14;
+    border: 1px solid rgba(245,240,245,0.1);
+    border-radius: 999px;
+    color: #f5f0f5;
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .gb-chat-input input:focus { border-color: #a8e6cf; }
+  .gb-chat-input input::placeholder { color: #6a5f7a; }
+  .gb-chat-input button {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #a8e6cf, #a0d8ff);
+    color: #0e0b14;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s;
+    flex-shrink: 0;
+  }
+  .gb-chat-input button:hover { transform: scale(1.05); }
+  .gb-chat-input button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .gb-chat-footer {
+    padding: 8px 16px;
+    text-align: center;
+    border-top: 1px solid rgba(245,240,245,0.05);
+    background: #17131f;
+  }
+  .gb-chat-footer p {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    color: #6a5f7a;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  @media (max-width: 500px) {
+    .gb-chat-window {
+      bottom: 90px;
+      right: 12px;
+      left: 12px;
+      width: auto;
+      height: 70vh;
+    }
+    .gb-chat-toggle { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+  }
+
+  .gb-chat-header { position: relative; }
+  .gb-chat-close {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245,240,245,0.06);
+    border: 1px solid rgba(245,240,245,0.1);
+    border-radius: 999px;
+    color: #b8aabe;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .gb-chat-close:hover {
+    background: rgba(245,240,245,0.12);
+    color: #f5f0f5;
+  }
+</style>
+
+<button class="gb-chat-toggle" id="gb-chat-toggle" aria-label="Open chat">
+  <svg class="gb-open-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <svg class="gb-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 6L6 18M6 6l12 12"/>
+  </svg>
+</button>
+
+<div class="gb-chat-window" id="gb-chat-window">
+  <div class="gb-chat-header">
+    <div class="gb-chat-avatar">G</div>
+    <div class="gb-chat-header-info">
+      <h4>Growbeaux Assistant</h4>
+    </div>
+    <button class="gb-chat-close" id="gb-chat-close" type="button" aria-label="Close chat">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="gb-chat-messages" id="gb-chat-messages"></div>
+
+  <div class="gb-chat-input">
+    <input type="text" id="gb-chat-input" placeholder="Ask anything about Growbeaux..." autocomplete="off">
+    <button id="gb-chat-send" aria-label="Send">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="gb-chat-footer">
+    <p>Powered by Growbeaux · Real humans on standby</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  const toggle = document.getElementById('gb-chat-toggle');
+  const win = document.getElementById('gb-chat-window');
+  const msgs = document.getElementById('gb-chat-messages');
+  const input = document.getElementById('gb-chat-input');
+  const send = document.getElementById('gb-chat-send');
+
+  // -------- SITE CONTENT INDEX --------
+  // This is the indexed content from across all Growbeaux pages.
+  // The assistant searches this every time the user asks something.
+  const siteIndex = [
+    // HOMEPAGE — hero & program
+    { page: '/', title: 'The program', section: 'Hero',
+      keywords: ['program', 'system', 'what is', 'overview', 'about'],
+      content: "Growbeaux is a $3/month weight loss and men's health system. The program includes daily check-ins, weekly protocol drops, the tracker app, and a private community. Supplements are sold separately — only if you want them." },
+
+    // PRICING
+    { page: '/', title: 'Pricing — $3/month', section: 'The stack',
+      keywords: ['price', 'cost', 'how much', '$3', 'pricing', 'fee', 'subscription', 'pay', 'monthly', 'cheap', 'expensive'],
+      content: "The Foundation tier is $3/month — the program, dashboard, and community forever. No trial trap. No upsell wall. Founding members lock in $3/mo for life." },
+
+    { page: '/', title: 'Founding member pricing', section: 'Hero',
+      keywords: ['founding', 'lock', 'forever', 'first 500', 'early', 'waitlist', 'reserve'],
+      content: "First 500 members lock in $3/mo for life — even when prices rise later. Drop your email below the hero or final CTA to lock in." },
+
+    // SUPPLEMENTS — overview
+    { page: '/shop', title: 'Supplements', section: 'The Shop',
+      keywords: ['supplement', 'stack', 'fuel', 'powder', 'pill', 'product', 'products'],
+      content: "Fifteen products across four categories: Daily Essentials (multi gummy, omega-3, creatine, creatine gummies, collagen, probiotic, beef liver), Performance (whey protein, electrolytes), Recovery (sleep formula, ashwagandha), and Respiratory (daily lung support, deep lung cleanse, breathe easy drops, mullein lung tea). Member pricing built in. Build a custom monthly bundle at /shop." },
+
+    // INDIVIDUAL PRODUCTS — daily
+    { page: '/shop', title: 'Daily Multi Gummy', section: 'Daily',
+      keywords: ['multi', 'multivitamin', 'vitamin', 'gummy', 'gummies', 'daily', 'starter', 'basic', 'vitamin d', 'b complex'],
+      content: "$24/month for members ($32 retail). 30+ vitamins and minerals in a daily gummy — B-complex, D3, K2, zinc. Mixed berry. The one supplement to take if you only take one." },
+
+    { page: '/shop', title: 'Omega-3 Fish Oil', section: 'Daily',
+      keywords: ['omega', 'fish oil', 'epa', 'dha', 'heart', 'brain', 'joint', 'inflammation'],
+      content: "$27/month for members ($36 retail). 1,200mg EPA + DHA, IFOS 5-star rated, triglyceride form. The most under-supplemented nutrient for men over 30." },
+
+    { page: '/shop', title: 'Creatine Monohydrate', section: 'Daily',
+      keywords: ['creatine', 'monohydrate', 'strength', 'lean', 'muscle', 'powder'],
+      content: "$18/month for members ($24 retail). 5g micronized creatine monohydrate, unflavored, mixes into anything. The most-studied supplement on earth." },
+
+    { page: '/shop', title: 'Creatine Gummies', section: 'Daily',
+      keywords: ['creatine', 'gummy', 'gummies', 'easy', 'travel', 'no shaker'],
+      content: "$28/month for members ($38 retail). Same 5g clinical dose as the powder, in a daily gummy. Berry flavor. For men who'd rather chew than mix." },
+
+    { page: '/shop', title: 'Collagen Peptides', section: 'Daily',
+      keywords: ['collagen', 'peptides', 'joint', 'joints', 'skin', 'hair', 'gut', 'tendon', 'aging'],
+      content: "$28/month for members ($38 retail). Grass-fed bovine Type I + III collagen, 20g per scoop, hydrolyzed. Mixes clean into coffee, shakes, or water. Unflavored." },
+
+    { page: '/shop', title: 'Mens Daily Probiotic', section: 'Daily',
+      keywords: ['probiotic', 'gut', 'digestion', 'immune', 'bloat', 'cfu', 'bacteria', 'flora'],
+      content: "$27/month for members ($36 retail). 50 billion CFU, 12 strains chosen for men's gut health and immunity. Shelf-stable, no refrigeration." },
+
+    { page: '/shop', title: 'Grass-Fed Beef Liver', section: 'Daily',
+      keywords: ['beef liver', 'liver', 'organ', 'ancestral', 'iron', 'b12', 'retinol', 'whole food', 'carnivore'],
+      content: "$32/month for members ($42 retail). Grass-fed New Zealand beef liver, freeze-dried to preserve nutrients. Natural B12, iron, retinol. 6 capsules per serving." },
+
+    // PERFORMANCE
+    { page: '/shop', title: 'Whey Isolate Protein', section: 'Performance',
+      keywords: ['protein', 'whey', 'isolate', 'shake', 'muscle', 'lean'],
+      content: "$40/month for members ($54 retail). 25g cold-filtered whey isolate per scoop, vanilla or unflavored. No fillers, sweeteners, or proprietary blends." },
+
+    { page: '/shop', title: 'Daily Electrolytes', section: 'Performance',
+      keywords: ['electrolyte', 'hydration', 'sodium', 'potassium', 'magnesium', 'cramp', 'energy', 'water'],
+      content: "$21/month for members ($28 retail). Real ratios of sodium, potassium, magnesium. No added sugar or artificial dyes. Unflavored mixes clean into anything." },
+
+    // RECOVERY
+    { page: '/shop', title: 'Sleep Formula', section: 'Recovery',
+      keywords: ['sleep', 'rest', 'insomnia', 'magnesium', 'glycine', 'theanine', 'melatonin', 'wind down'],
+      content: "$24/month for members ($32 retail). Magnesium glycinate + glycine + L-theanine — the three ingredients with the most sleep research behind them. No melatonin, no grogginess." },
+
+    { page: '/shop', title: 'Ashwagandha KSM-66', section: 'Recovery',
+      keywords: ['ashwagandha', 'ksm-66', 'stress', 'cortisol', 'anxiety', 'adaptogen', 'recovery'],
+      content: "$26/month for members ($34 retail). 600mg KSM-66 — the clinically-studied form, standardized for actives. Helps men manage stress, sleep deeper, recover harder." },
+
+    // RESPIRATORY LINE
+    { page: '/shop', title: 'Daily Lung Support', section: 'Respiratory',
+      keywords: ['lung', 'lungs', 'breath', 'breathing', 'respiratory', 'nac', 'quercetin', 'air quality', 'pollution', 'former smoker', 'ex smoker', 'vape'],
+      content: "$24/month for members ($32 retail). NAC + Quercetin + Vitamin C. Antioxidant support for men breathing modern air. NAC supports natural mucus clearance. For everyday prevention, not crisis response." },
+
+    { page: '/shop', title: 'Deep Lung Cleanse Complex', section: 'Respiratory',
+      keywords: ['lung cleanse', 'mullein', 'cordyceps', 'reishi', '15-in-1', '60 day', 'reset', 'former smoker', 'quit smoking', 'ex smoker', 'tar', 'detox'],
+      content: "$36/month for members ($48 retail). 15-in-1 concentrated formula: Mullein, NAC, Quercetin, Cordyceps, Reishi, Marshmallow Root, Oregano, Bromelain. A 60-day reset for men supporting their respiratory system after years of stress — environmental, occupational, or personal." },
+
+    { page: '/shop', title: 'Breathe Easy Drops', section: 'Respiratory',
+      keywords: ['drops', 'tincture', 'liquid', 'mullein drops', 'fast acting', 'respiratory tincture'],
+      content: "$21/month for members ($28 retail). Liquid mullein + marshmallow root tincture. Absorbs faster than capsules. Three drops under the tongue, twice daily. 2 fl oz, ~60 days." },
+
+    { page: '/shop', title: 'Mullein Lung Tea', section: 'Respiratory',
+      keywords: ['tea', 'mullein tea', 'herbal tea', 'evening', 'ritual', 'caffeine free', 'wind down', 'nightly'],
+      content: "$16/month for members ($22 retail). Loose-leaf herbal: pure mullein leaf, marshmallow root, ginger, licorice. 30 servings, naturally caffeine-free. A nightly ritual for the men in respiratory recovery." },
+
+    // RESPIRATORY DISCLAIMER
+    { page: '/shop', title: 'About the respiratory line', section: 'Disclaimer',
+      keywords: ['quit smoking', 'smoking cessation', 'cure', 'treat', 'cigarette', 'vape', 'nicotine'],
+      content: "The respiratory products are designed for general respiratory wellness — not smoking cessation. They aren't a substitute for quitting. If you're trying to quit smoking, the most powerful thing you can do is talk to your doctor about evidence-based programs (Chantix, nicotine replacement, behavioral support)." },
+
+    // BUNDLES
+    { page: '/shop', title: 'Building a monthly bundle', section: 'Stack builder',
+      keywords: ['bundle', 'subscription', 'monthly', 'subscribe', 'recurring', 'multiple products'],
+      content: "Add any combination of products to a monthly bundle. Member pricing applies to every item. Subscribe monthly to lock in savings, or buy individually. Cancel any time." },
+
+    { page: '/shop', title: 'AI stack builder', section: 'Stack builder',
+      keywords: ['ai', 'stack builder', 'recommend', 'recommendation', 'custom', 'personalized', 'what should i take'],
+      content: "Type what you want in plain English ('I want to grow muscle' or 'I want to sleep better') and the stack builder picks matching products. Or click a goal — Cut, Recomp, Build, Reset — for a pre-built stack." },
+
+    // INGREDIENTS / QUALITY
+    { page: '/', title: 'Ingredient quality', section: 'FAQ',
+      keywords: ['ingredient', 'quality', 'tested', 'third-party', 'clean', 'fillers', 'proprietary', 'label'],
+      content: "Clean ingredients, third-party tested. We list every ingredient and dosage on the label — no proprietary blends, no fillers, no marketing fluff." },
+
+    // HOW IT WORKS
+    { page: '/#how', title: 'How it works — 4 steps', section: 'The system',
+      keywords: ['how it works', 'how does', 'process', 'steps', 'flow', 'start', 'begin', 'sign up', 'getting started', 'onboarding'],
+      content: "Four steps: 1) Join — $3 gets the full program. 2) Assess — 5-min intake builds your protocol. 3) Stack — add supplements at member pricing if you want. 4) Execute — daily check-ins, weekly weigh-ins, monthly review." },
+
+    // SCIENCE
+    { page: '/science', title: 'Protein preserves muscle', section: 'Pillar 01',
+      keywords: ['protein', 'muscle', 'lean mass', 'preserve', 'cut', 'cutting'],
+      content: "Men cutting calories without enough protein lose roughly equal parts fat and lean muscle. With 0.8–1.0 g/lb of bodyweight in protein per day, men retain muscle while losing fat. Sources: Helms 2014, Longland 2016, Murphy 2018." },
+
+    { page: '/science', title: 'Resistance training beats cardio', section: 'Pillar 02',
+      keywords: ['training', 'exercise', 'workout', 'lifting', 'cardio', 'strength', 'gym', 'resistance'],
+      content: "For fat loss and aesthetic goals, 2–4 strength sessions per week outperform cardio-heavy programs. You burn fewer calories during the workout but more across the day, and keep the muscle that gives shape to a leaner body. Sources: Willis 2012, Schoenfeld 2017." },
+
+    { page: '/science', title: 'Sleep is the most underrated weight loss tool', section: 'Pillar 03',
+      keywords: ['sleep science', 'sleep research', 'leptin', 'ghrelin', 'hormone'],
+      content: "Men sleeping under 6 hours regulate appetite hormones (leptin, ghrelin) so poorly that they lose nearly twice as much muscle on the same diet. Sleep gets a daily check-in slot for a reason. Sources: Nedeltcheva 2010, Spiegel 2004." },
+
+    { page: '/science', title: 'Recovery and lung function', section: 'Pillar 04',
+      keywords: ['recovery science', 'breath', 'lung function', 'oxygen', 'vo2'],
+      content: "Lung function and recovery quality predict body composition outcomes more than people realize. Better breathing means better workouts, better sleep, better recovery — compounding gains over time." },
+
+    { page: '/science', title: 'Cart analyzer — what your stack does', section: 'Personalized',
+      keywords: ['analyze', 'analyzer', 'breakdown', 'explain my cart', 'what does my stack do', 'personalized', 'analysis', 'why am i taking', 'what does this do', 'science of my cart'],
+      content: "The science page has a cart analyzer that breaks down every product in your bundle — what it does, why it's in your stack, who it's best for, and the research behind it. It also flags synergies between products you've combined. Add products at /shop, then visit /science to see your personalized analysis." },
+
+    { page: '/science', title: 'Research generator — find the studies yourself', section: 'Dig deeper',
+      keywords: ['research', 'study', 'studies', 'pubmed', 'scholar', 'examine', 'cochrane', 'find studies', 'dig deeper', 'evidence', 'peer reviewed', 'citation', 'paper', 'journal', 'literature', 'is it real', 'does it work'],
+      content: "The science page has a research generator at the bottom — type any health, supplement, or training question and it sends you straight to PubMed, Google Scholar, Examine.com, and Cochrane Reviews with the search pre-filled. Best way to verify any claim with real peer-reviewed evidence." },
+
+    // ABOUT — principles
+    { page: '/about', title: 'No 12-week packages', section: 'Promises',
+      keywords: ['cancel', 'cancellation', 'refund', 'lock in', 'package', '12-week', '12 week', 'commit', 'contract', 'lock you in'],
+      content: "Cancel any time, in one tap. 7-day refund window, no questions asked. We don't believe in hard-to-cancel subscriptions. If we're earning $3, we earn it monthly." },
+
+    { page: '/about', title: 'Third-party tested', section: 'Promises',
+      keywords: ['testing', 'third party', 'verified', 'certified', 'quality control', 'gmp'],
+      content: "Every supplement batch is tested by independent labs for purity, potency, and contaminants. Certificates of analysis available on request. No pixie dust ingredients, no proprietary blends." },
+
+    { page: '/about', title: 'No fake transformations', section: 'Promises',
+      keywords: ['transformation', 'before after', 'before/after', 'photo', 'fake', 'photoshop', 'real results'],
+      content: "Any before/after photos shown are real members or no photos at all. We'd rather be slow than dishonest. No paid testimonials, no AI-generated bodies." },
+
+    { page: '/about', title: 'No selling your data', section: 'Promises',
+      keywords: ['privacy', 'data', 'private', 'sell data', 'broker', 'tracking', 'advertiser'],
+      content: "Your weight, check-ins, and photos stay yours. We don't sell to advertisers, brokers, or anyone. Progress photos in the app are always private — only you see them." },
+
+    { page: '/about', title: 'Who built it', section: 'Founders',
+      keywords: ['founder', 'founders', 'team', 'who', 'built', 'background', 'story', 'who made', 'who started', 'creator', 'owner', 'maryland', 'towson', 'susquehanna', 'baseball', 'football', 'college athlete', 'athlete', 'athletes'],
+      content: "Growbeaux is built by college athletes from Maryland — guys who played baseball at Towson and football at Susquehanna. Years inside locker rooms, weight rooms, and team meal halls. We're building the program we wished we had at 22 — for men who want to lose the weight without losing themselves." },
+
+    // WHY MEN
+    { page: '/', title: 'Why men only', section: 'FAQ',
+      keywords: ['why men', 'men only', 'gender', 'women', 'female', 'male', 'sex'],
+      content: "Men lose weight differently — different protein needs, training response, recovery patterns. Most programs treat every body the same. Growbeaux doesn't. A women's-specific brand is in development." },
+
+    // COMMUNITY
+    { page: '/', title: 'The Group community', section: 'Foundation tier',
+      keywords: ['community', 'group', 'members', 'forum', 'chat', 'people', 'social', 'whop', 'discord', 'join', 'sign up', 'subscribe', 'how to join'],
+      content: "The Group is a private community of men actually doing the work — hosted on Whop at whop.com/growbeaux-the-group. Daily check-ins, wins, weekly protocol discussion. $3/month, locked for life as a founding member. Quiet competence over loud hype. No selling to other members. No DMs." },
+
+    // TRACKER APP
+    { page: '/', title: 'The tracker app', section: 'Features',
+      keywords: ['app', 'tracker', 'mobile', 'phone', 'iphone', 'android', 'dashboard', 'log', 'weight tracking'],
+      content: "Members get the tracker app — a mobile-first dashboard for weight logs, daily check-ins (energy, sleep, hunger, workout), progress photos (always private), and the community feed. Coming at members.growbeaux.com." },
+
+    // LAUNCH
+    { page: '/', title: 'When does it launch?', section: 'FAQ',
+      keywords: ['launch', 'when', 'release', 'available', 'live', 'open', 'date', 'soon', '2026'],
+      content: "Soon. Waitlist members get first access and founding pricing locked for life. We'd rather launch right than launch fast." },
+
+    // CONTACT
+    { page: '/contact', title: 'Contact us', section: 'Contact',
+      keywords: ['contact', 'email', 'support', 'help', 'human', 'reach', 'talk', 'message', 'get in touch'],
+      content: "Email hello@growbeaux.com for anything — questions, partnerships, press, support. Real humans reply within a day or two." },
+
+    // PRIVACY ON APP
+    { page: '/', title: 'Photo privacy', section: 'App',
+      keywords: ['photo privacy', 'photos', 'progress photo', 'picture', 'image'],
+      content: "Progress photos in the tracker app are always private — never visible to other members. Daily check-ins can be private OR shared to The Group, your choice." },
+
+    // PARTNERS
+    { page: '/contact', title: 'Partnerships', section: 'Contact',
+      keywords: ['partner', 'partnership', 'business', 'wholesale', 'b2b', 'affiliate'],
+      content: "For partnerships, email hello@growbeaux.com with 'partnership' in the subject. We respond within a day or two." },
+
+    // PRESS
+    { page: '/contact', title: 'Press inquiries', section: 'Contact',
+      keywords: ['press', 'media', 'journalist', 'reporter', 'interview', 'feature', 'story'],
+      content: "Press: email hello@growbeaux.com with 'press' in the subject. Brand kit and founder interviews available on request." },
+
+    { page: '/privacy', title: 'Privacy policy', section: 'Privacy',
+      keywords: ['privacy', 'data', 'cookies', 'tracking', 'gdpr', 'ccpa', 'personal info', 'delete my data', 'sell my data', 'collect', 'collected'],
+      content: "We collect the minimum we need: messages you send us, anonymous Vercel Analytics, and local browser storage for your stack. We never sell your data, never use ad-tracking pixels, never run Facebook/Google/TikTok pixels. Email hello@growbeaux.com to request your data or delete it. Full details at /privacy." },
+
+    { page: '/shop', title: 'Preview imagery — product photos', section: 'About the photos',
+      keywords: ['real photo', 'real product', 'preview', 'is this real', 'fake', 'mockup', 'render', 'cgi', 'ai generated', 'when ships', 'when will products', 'launch', 'q3'],
+      content: "The product images on the shop page are preview imagery — they show our launch packaging design, but the products aren't shipping yet. Final supplements launch Q3 2026. Founding members on The Group ($3/mo on Whop) get notified first when supplements drop." },
+  ];
+
+  // -------- INTELLIGENT SEARCH --------
+  // Splits the user query into terms, scores each indexed item by how many term hits it has.
+  // Title, keywords, and content are weighted differently. Returns top matches.
+  function search(query) {
+    const stop = new Set(['the','a','an','is','of','for','to','and','in','on','my','i','me','it','this','that','do','does','can','what','how','why','when','where','about','like','tell','show','give','am','are','have','has','need','want','would']);
+    const terms = query.toLowerCase()
+      .replace(/[^\w\s'-]/g, ' ')
+      .split(/\s+/)
+      .filter(t => t.length > 1 && !stop.has(t));
+
+    if (terms.length === 0) return [];
+
+    const scored = siteIndex.map(item => {
+      let score = 0;
+      const haystack = {
+        title: item.title.toLowerCase(),
+        kw: item.keywords.join(' ').toLowerCase(),
+        content: item.content.toLowerCase(),
+        section: (item.section || '').toLowerCase(),
+      };
+      for (const term of terms) {
+        if (haystack.kw.includes(term)) score += 5;
+        if (haystack.title.includes(term)) score += 4;
+        if (haystack.section.includes(term)) score += 2;
+        if (haystack.content.includes(term)) score += 1;
+        // Partial match bonus for keyword-like terms
+        for (const kw of item.keywords) {
+          if (kw.includes(term) || term.includes(kw)) score += 2;
+        }
+      }
+      return { item, score };
+    }).filter(r => r.score > 0)
+      .sort((a, b) => b.score - a.score);
+
+    return scored.slice(0, 3).map(r => r.item);
+  }
+
+  // -------- RESPONSE BUILDER --------
+  function buildResponse(query) {
+    const matches = search(query);
+
+    if (matches.length === 0) {
+      return {
+        text: "I couldn't find that on the site. Try searching different terms, or <a href='/contact'>send a message</a> and a real human will get back to you within 1-2 business days.",
+        chips: ['How much does it cost?', 'How does it work?', 'Tell me about supplements']
+      };
+    }
+
+    const top = matches[0];
+    const others = matches.slice(1);
+
+    let text = top.content;
+    if (top.page && top.page !== '/') {
+      text += ` <a href="${top.page}">Read more →</a>`;
+    } else if (top.page === '/' && top.section !== 'Hero') {
+      text += ` <a href="${top.page}">View on homepage →</a>`;
+    }
+
+    // If we have related results, add them as chips
+    let chips = [];
+    if (others.length > 0) {
+      chips = others.map(o => o.title);
+    } else {
+      chips = ['How much does it cost?', 'How does it work?', 'Where can I sign up?'];
+    }
+
+    return { text, chips };
+  }
+
+  function addMsg(text, who) {
+    const div = document.createElement('div');
+    div.className = 'gb-msg ' + who;
+    div.innerHTML = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+
+  function addChips(chips) {
+    if (!chips || !chips.length) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'gb-chips';
+    chips.forEach(c => {
+      const btn = document.createElement('button');
+      btn.className = 'gb-chip';
+      btn.textContent = c;
+      btn.onclick = () => {
+        wrap.remove();
+        handleSend(c);
+      };
+      wrap.appendChild(btn);
+    });
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function handleSend(text) {
+    if (!text) return;
+    addMsg(text, 'user');
+    input.value = '';
+    setTimeout(() => {
+      const r = buildResponse(text);
+      addMsg(r.text, 'bot');
+      setTimeout(() => addChips(r.chips), 200);
+    }, 400);
+  }
+
+  let greeted = false;
+  function greet() {
+    if (greeted) return;
+    greeted = true;
+    setTimeout(() => {
+      addMsg("Hey — I'm the Growbeaux assistant. Ask me anything about the program, pricing, supplements, or the science. I search the entire site to find your answer.", 'bot');
+      setTimeout(() => addChips([
+        'How much does it cost?',
+        'Tell me about supplements',
+        'What does the science say?',
+        'How is this different?'
+      ]), 300);
+    }, 200);
+  }
+
+  toggle.addEventListener('click', () => {
+    win.classList.toggle('open');
+    toggle.classList.toggle('active');
+    if (win.classList.contains('open')) greet();
+  });
+
+  send.addEventListener('click', () => handleSend(input.value.trim()));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSend(input.value.trim());
+  });
+
+  const gbChatClose = document.getElementById("gb-chat-close");
+  if (gbChatClose) {
+    gbChatClose.addEventListener("click", () => {
+      win.classList.remove("open");
+      toggle.classList.remove("active");
+    });
+  }
+})();
+</script>
+
+
+<!-- ============== FLOATING CART (synced from shop bundle) ============== -->
+<a href="/science#analyzer" class="cart-fab-global" id="cart-fab-global" aria-label="Analyze your stack">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="21" r="1"/>
+    <circle cx="20" cy="21" r="1"/>
+    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+  </svg>
+  <span class="cart-fab-global-badge" id="cart-fab-global-badge">0</span>
+</a>
+
+<style>
+  .cart-fab-global {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #a8e6cf, #a0d8ff);
+    color: #0e0b14;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    z-index: 99;
+    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .cart-fab-global.visible { display: flex; }
+  .cart-fab-global:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+  }
+  .cart-fab-global-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    background: #ffb7a0;
+    color: #0e0b14;
+    border-radius: 999px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #0e0b14;
+  }
+</style>
+
+<script>
+(function() {
+  // Read cart from localStorage and update FAB on all pages
+  function updateCartFab() {
+    const fab = document.getElementById("cart-fab-global");
+    const badge = document.getElementById("cart-fab-global-badge");
+    if (!fab || !badge) return;
+    let count = 0;
+    try {
+      const raw = localStorage.getItem("growbeaux_bundle");
+      if (raw) {
+        const arr = JSON.parse(raw);
+        if (Array.isArray(arr)) count = arr.length;
+      }
+    } catch (e) {}
+    badge.textContent = count;
+    if (count > 0) {
+      fab.classList.add("visible");
+    } else {
+      fab.classList.remove("visible");
+    }
+  }
+  updateCartFab();
+  // Update if user comes back to page (e.g., from another tab)
+  window.addEventListener("storage", updateCartFab);
+  window.addEventListener("focus", updateCartFab);
+})();
+</script>
+
+
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
